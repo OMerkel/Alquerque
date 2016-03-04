@@ -19,8 +19,8 @@ This Alquerque is a board game using Monte-Carlo Tree Search (MCTS) with UCB (Up
 * Alfonso X el Sabio, "Libro de los Juegos" or "Libros del Axedrez, Dados et Tablas", 98 pages, available at the monastery library St. Lorenze del Escorial, Madrid, Spain, written in 1251 to 1282
 * Robert Charles Bell, "Board and Table Games from Many Civilizations", Volume 1, Dover Publications, US, 1979
 * Sonja Musser Golladay, "[Los libros de acedrex dados e tablas: Historical, Artistic and Metaphysical Dimensions of Alfonso X's Book of Games](http://arizona.openrepository.com/arizona/handle/10150/194159)", PhD Dissertation, 591pp., The University of Arizona, US, 2007
-** http://hdl.handle.net/10150/194159
-** http://jnsilva.ludicum.org/HJT2k9/AlfonsoX.pdf
+  * http://hdl.handle.net/10150/194159
+  * http://jnsilva.ludicum.org/HJT2k9/AlfonsoX.pdf
 
 # 3rd Party Libraries
 
