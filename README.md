@@ -31,4 +31,4 @@ This Alquerque is a board game using Monte-Carlo Tree Search (MCTS) with UCB (Up
 
 * Association for the Advancement of Artificial Intelligence, http://www.aaai.org
 * HTML Living Standard, Web Workers, https://html.spec.whatwg.org
-
+* Alphonso X - Book of Games - A Game Researcher's Resource, http://historicgames.com/alphonso
