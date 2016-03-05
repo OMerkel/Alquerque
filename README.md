@@ -22,7 +22,7 @@ This Alquerque is a board game using Monte-Carlo Tree Search (MCTS) with UCB (Up
 * Sonja Musser Golladay, "[Los libros de acedrex dados e tablas: Historical, Artistic and Metaphysical Dimensions of Alfonso X's Book of Games](http://arizona.openrepository.com/arizona/handle/10150/194159)", PhD Dissertation, 591pp., The University of Arizona, US, 2007
   * http://hdl.handle.net/10150/194159
   * http://jnsilva.ludicum.org/HJT2k9/AlfonsoX.pdf
-* Arie van der Stoep, "[The origin of morris and draughts by etymology](http://bgsj.ludus-opuscula.org/PDF_Files/9_15_Stoep_print.pdf)", in Board Games Studies Journal, Issue 9, 2015, ISSN 2183-3311, http://bgsj.ludus-opuscula.org, published by Associação Ludus, Lisboa, Portugal, 2015.
+* Arie van der Stoep, "[The origin of morris and draughts by etymology](http://bgsj.ludus-opuscula.org/PDF_Files/9_15_Stoep_print.pdf)", in Board Game Studies Journal, Issue 9, 2015, ISSN 2183-3311, http://bgsj.ludus-opuscula.org, published by Associação Ludus, Lisboa, Portugal, 2015.
 
 # 3rd Party Libraries
 
@@ -35,4 +35,4 @@ This Alquerque is a board game using Monte-Carlo Tree Search (MCTS) with UCB (Up
 * HTML Living Standard, Web Workers, https://html.spec.whatwg.org
 * Standard ECMA-262 ECMAScript Language Specification, http://www.ecma-international.org/publications/standards/Ecma-262.htm
 * Alphonso X - Book of Games - A Game Researcher's Resource, http://historicgames.com/alphonso
-* Board Games Studies Journal, http://bgsj.ludus-opuscula.org
+* Board Game Studies Journal, http://bgsj.ludus-opuscula.org
