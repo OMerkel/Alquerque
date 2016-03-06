@@ -16,10 +16,10 @@ This Alquerque is a board game using Monte-Carlo Tree Search (MCTS) with UCB (Up
 
 * Guillaume Maurice Jean-Bernard Chaslot, "[Monte-Carlo Tree Search](https://project.dke.maastrichtuniversity.nl/games/files/phd/Chaslot_thesis.pdf)", PHD Proefschrift, Universiteit Maastricht, NL, 2010.
 * Guillaume Chaslot, Sander Bakkes, Istvan Szita and Pieter Spronck, "[Monte-Carlo Tree Search: A New Framework for Game AI](http://sander.landofsand.com/publications/AIIDE08_Chaslot.pdf)", in Proceedings of the Fourth Artificial Intelligence and Interactive Digital Entertainment Conference, Stanford, California, 2008. Published by The AAAI Press, Menlo Park, California.
-* Alfonso X el Sabio, "Libro de los Juegos" or "Libros del Axedrez, Dados et Tablas", 98 double-sided pages, available at the monastery library Real Sitio de San Lorenzo del Escorial, Madrid, Spain, written in 1251 to 1282
-  * [Transcript/Translation into English](http://www.mediafire.com/?nenjj1dimtd) by Sonja Musser Golladay 
-* Robert Charles Bell, "Board and Table Games from Many Civilizations", Volume 1, Dover Publications, US, 1979
-* Sonja Musser Golladay, "[Los libros de acedrex dados e tablas: Historical, Artistic and Metaphysical Dimensions of Alfonso X's Book of Games](http://arizona.openrepository.com/arizona/handle/10150/194159)", PhD Dissertation, 591pp., The University of Arizona, US, 2007
+* Alfonso X el Sabio, "Libro de los Juegos" or "Libros del Axedrez, Dados et Tablas", 98 double-sided pages, available at the monastery library Real Sitio de San Lorenzo del Escorial, Madrid, Spain, written from 1251 to 1282.
+  * [Transcript/Translation into English](http://www.mediafire.com/?nenjj1dimtd) by Sonja Musser Golladay
+* Robert Charles Bell, "Board and Table Games from Many Civilizations", Volume 1, Dover Publications, US, 1979.
+* Sonja Musser Golladay, "[Los libros de acedrex dados e tablas: Historical, Artistic and Metaphysical Dimensions of Alfonso X's Book of Games](http://arizona.openrepository.com/arizona/handle/10150/194159)", PhD Dissertation, 591pp., The University of Arizona, US, 2007.
   * http://hdl.handle.net/10150/194159
   * http://jnsilva.ludicum.org/HJT2k9/AlfonsoX.pdf
 * Arie van der Stoep, "[The origin of morris and draughts by etymology](http://bgsj.ludus-opuscula.org/PDF_Files/9_15_Stoep_print.pdf)", in Board Game Studies Journal, Issue 9, 2015, ISSN 2183-3311, http://bgsj.ludus-opuscula.org, published by Associação Ludus, Lisboa, Portugal, 2015.
