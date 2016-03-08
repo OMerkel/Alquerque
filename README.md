@@ -13,6 +13,8 @@ This Alquerque is a board game using Monte-Carlo Tree Search (MCTS) with UCB (Up
 
 #Rules
 
+There are different rules available for Alquerque de doze. The default rules as implemented here are as follows. Mind that some parts of the rules might be altered through selected options.
+
 ##Game Material
 
 Alquerque is a board game. The rectangular Alquerque board has fixed dimension of 5 times 5 positions horizontally and vertically. Positions on board are connected by a fixed line pattern showing allowed directions of movement for players’ checkers. There are two opposing players: one is controlling the light checkers and the other is controlling the dark checkers.
