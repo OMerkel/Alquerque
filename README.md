@@ -36,7 +36,7 @@ Passing is not allowed.
  
 Movement of checkers is performed strictly along the lines of the board onto adjacent free positions.
 
-A light checker can not move from it's position to positions on rows with lower numbers. A dark checker can not move from it's position to positions on rows with higher numbers. Thus neither a light nor a dark checker can move backwards in direction of the player's base row.
+A light checker can not move from it's position to positions on rows with lower numbers. A dark checker can not move from it's position to positions on rows with higher numbers. Thus neither a light nor a dark checker can move backwards in direction of the player's own base row.
 
 A checker that reached the opponent's base row can not be moved any longer but only capture opponent's checkers if possible. Anyway the checker is allowed to move again, too, if after the capture it is not positioned on the opponent's base row any longer.
 
