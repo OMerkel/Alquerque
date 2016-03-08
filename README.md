@@ -11,6 +11,46 @@ __Keywords, Categories__ _Monte-Carlo Tree Search (MCTS), Upper Confidence Bound
 
 This Alquerque is a board game using Monte-Carlo Tree Search (MCTS) with UCB (Upper Confidence Bounds) applied to trees (UCT in short) for the computer player AI. The board game is used for demonstration purposes of the UCT algorithm.
 
+#Rules
+
+##Game Material
+
+Alquerque is a board game. The rectangular Alquerque board has fixed dimension of 5 times 5 positions horizontally and vertically. Positions on board are connected by a fixed line pattern showing allowed directions of movement for players’ checkers. There are two opposing players: one is controlling the light checkers and the other is controlling the dark checkers.
+
+##Starting Position
+
+The twelve light checkers are placed on all positions of row 1 and 2, and positions d3 and e3 initially. The twelve dark checkers are placed on all positions of row 4 and 5, and positions a3 and b3 initially.
+
+##Game Mechanics
+
+Alquerque is played alternating players’ turns. The player controlling light checkers moves first. A player might either
+
+* capture opponent’s pieces if possible or
+* must perform a normal non-capturing move.
+
+Passing is not allowed.
+
+##Non-capturing Move
+ 
+Movement of checkers is performed strictly along the lines of the board onto adjacent free positions.
+
+A light checker can not move from it's position to positions on rows with lower numbers. A dark checker can not move from it's position to positions on rows with higher numbers. Thus neither a light nor a dark checker can move backwards in direction of the player's base row.
+
+A checker that reached the opponent's base row can not be moved any longer but only capture opponent's checkers if possible. Anyway the checker is allowed to move again, too, if after the capture it is not positioned on the opponent's base row any longer.
+
+##Capturing Move
+
+Captures are compulsory. If capturing is possible on a player’s turn then the player must perform a capturing move.
+
+An opponent's checker on an adjacent position along a line of an own checker is captured by jumping over it in straight line onto an adjacent free position along the line. Jumping to perform captures is done in straight line without any change of direction. Checkers captured leave the board and do not return. By each jump exactly one single opponent's checker is jumped over and thus captured at a time. Checkers can not jump over or capture checkers of own color. Captures can be done if available any time on own turn after the game has started.
+
+In a player's turn multiple consecutive captures performed with the same own checker are allowed and compulsory. The player must continue to capture in the possible multiple consecutive capture until no additional capture is possible. It is not necessary to select the longest possible path to capture the maximum opponent’s pieces. On alternative paths the player may decide freely on which one to continue capturing. After each single straight line jump if performing multiple consecutive captures the direction of jumps may be changed although reverse direction change is not allowed. A captured checker is removed from game play instantly while being jumped. Thus it can not be reused to be jumped again in a multiple capture move.
+
+Checkers can not be stacked by moving or jumping on top of the other.
+
+##Winning Conditions
+
+A player wins by either capturing all opponent's checkers or if the opponent can not perform any legal move. With given rules a tie or draw game is only possible if the option _Inverting each pieces' own last move is... allowed_ is chosen. Per default inverting each pieces' own last move is strictly forbidden.
 
 #References
 
