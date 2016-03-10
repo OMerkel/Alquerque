@@ -25,7 +25,7 @@ Alquerque is a board game. The rectangular Alquerque board has fixed dimension o
 
 <img width='30%' ondragstart='return false;' alt='Initial board set up, Creative Commons License, This image is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.' src='html5/src/img/initial_board.jpg' />
 
-The twelve light checkers are placed on all positions of row 1 and 2, and positions d3 and e3 initially. The twelve dark checkers are placed on all positions of row 4 and 5, and positions a3 and b3 initially.
+The twelve light checkers are placed on all positions of rows 1 and 2, and positions d3 and e3 initially. The twelve dark checkers are placed on all positions of rows 4 and 5, and positions a3 and b3 initially.
 
 ##Game Mechanics
 
