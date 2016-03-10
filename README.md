@@ -25,7 +25,7 @@ Alquerque is a board game. The rectangular Alquerque board has fixed dimension o
 
 <img width='30%' ondragstart='return false;' alt='Initial board set up, Creative Commons License, This image is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.' src='html5/src/img/initial_board.jpg' />
 
-The twelve light checkers are placed on all positions of rows 1 and 2, and positions d3 and e3 initially. The twelve dark checkers are placed on all positions of rows 4 and 5, and positions a3 and b3 initially.
+The twelve light checkers are placed on all positions of rows 1 and 2, and positions d3 and e3 initially. Thus the row 1 is referred to as being the base row of the player controlling the light checkers. The twelve dark checkers are placed on all positions of rows 4 and 5, and positions a3 and b3 initially. Thus the row 5 is referred to as being the base row of the player controlling the dark checkers.
 
 ##Game Mechanics
 
@@ -46,7 +46,7 @@ A checker that reached the opponent's base row can not be moved any longer but o
 
 ##Capturing Move
 
-Captures are compulsory. If capturing is possible on a player’s turn then the player must perform a capturing move.
+Captures are compulsory. If capturing is possible on a player’s turn then the player must perform a capturing move. A capture can be performed in any straight direction indicated by the line pattern of the board (even in direction of own base row).
 
 An opponent's checker on an adjacent position along a line of an own checker is captured by jumping over it in straight line onto an adjacent free position along the line. Jumping to perform captures is done in straight line without any change of direction. Checkers captured leave the board and do not return. By each jump exactly one single opponent's checker is jumped over and thus captured at a time. Checkers can not jump over or capture checkers of own color. Captures can be done and are mandatory if available any time on own turn after the game has started.
 
