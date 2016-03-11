@@ -19,17 +19,28 @@ There are different rules available for Alquerque de doze. The default rules as 
 
 <img width='30%' ondragstart='return false;' alt='Game board with algebraic notation, Creative Commons License, This image is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.' src='html5/src/img/algebraic_notation-1.jpg' />
 
-Alquerque is a board game. The rectangular Alquerque board has fixed dimension of 5 times 5 positions horizontally and vertically. Positions on board are connected by a fixed line pattern showing allowed directions of movement for players’ checkers. There are two opposing players: one is controlling the light checkers and the other is controlling the dark checkers.
+Alquerque is a board game. The rectangular Alquerque board has
+fixed dimension of 5 times 5 positions horizontally and vertically.
+Positions on board are connected by a fixed line pattern showing
+allowed directions of movement for players’ checkers.
+There are two opposing players: one is controlling the light
+checkers and the other is controlling the dark checkers.
 
 ##Starting Position
 
 <img width='30%' ondragstart='return false;' alt='Initial board set up, Creative Commons License, This image is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.' src='html5/src/img/initial_board.jpg' />
 
-The twelve light checkers are placed on all positions of rows 1 and 2, and positions d3 and e3 initially. Thus the row 1 is referred to as being the base row of the player controlling the light checkers. The twelve dark checkers are placed on all positions of rows 4 and 5, and positions a3 and b3 initially. Thus the row 5 is referred to as being the base row of the player controlling the dark checkers.
+The twelve light checkers are placed on all positions of rows 1 and 2,
+and positions d3 and e3 initially. Thus the row 1 is referred to as
+being the base row of the player controlling the light checkers.
+The twelve dark checkers are placed on all positions of rows 4 and 5,
+and positions a3 and b3 initially. Thus the row 5 is referred to as
+being the base row of the player controlling the dark checkers.
 
 ##Game Mechanics
 
-Alquerque is played alternating players’ turns. The player controlling light checkers moves first. A player might either
+Alquerque is played alternating players’ turns. The player
+controlling light checkers moves first. A player might either
 
 * capture opponent’s pieces if possible or
 * must perform a normal non-capturing move.
