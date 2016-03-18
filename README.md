@@ -162,3 +162,15 @@ own last move is strictly forbidden.
 * Standard ECMA-262 ECMAScript Language Specification, http://www.ecma-international.org/publications/standards/Ecma-262.htm
 * Alphonso X - Book of Games - A Game Researcher's Resource, http://historicgames.com/alphonso
 * Board Game Studies Journal, http://bgsj.ludus-opuscula.org
+
+#Contributors / Authors
+
+<table>
+  <tr>
+    <td><p>Oliver Merkel
+    </p>
+    </td>
+  </tr>
+</table>
+
+_All logos, brands and trademarks mentioned belong to their respective owners._
