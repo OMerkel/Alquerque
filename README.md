@@ -46,7 +46,7 @@ selected options.
 
 ##Game Material
 
-<img width='30%' ondragstart='return false;' alt='Game board with algebraic notation, Creative Commons License, This image is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.' src='html5/src/img/algebraic_notation-1.jpg' />
+<img width='30%' ondragstart='return false;' alt='Game board with algebraic notation, Creative Commons License, This image is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.' src='html5/src/img/algebraic_notation.jpg' />
 
 Alquerque is a board game. The rectangular Alquerque board has
 fixed dimension of 5 times 5 positions horizontally and vertically.
