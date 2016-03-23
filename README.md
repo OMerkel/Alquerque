@@ -51,9 +51,11 @@ selected options.
 Alquerque is a board game. The rectangular Alquerque board has
 fixed dimension of 5 times 5 positions horizontally and vertically.
 Positions on board are connected by a fixed line pattern showing
-allowed directions of movement for players’ checkers.
-There are two opposing players: one is controlling the light
-checkers and the other is controlling the dark checkers.
+potential paths of movement for players’ checkers. The checkers
+are placed on the positions (or _points_) of line intersections
+in the line pattern. There are two opposing players: one is
+controlling the light checkers and the other is controlling
+the dark checkers.
 
 ##Starting Position
 
