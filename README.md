@@ -1,4 +1,6 @@
-# Alquerque
+<img alt="Alquerque icon" width="64" src="html5/src/img/icons/alquerque-64.png" /> Alquerque
+====================
+
 Alquerque - 2 player abstract strategic perfect information
 traditional board game with computer AI option.
 
