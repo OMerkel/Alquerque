@@ -158,6 +158,7 @@ own last move is strictly forbidden.
 
 * jQuery: MIT licensed, https://github.com/jquery/jquery
 * jQuery Mobile: MIT licensed, https://github.com/jquery/jquery-mobile
+* Raphaël: MIT licensed, https://github.com/DmitryBaranovskiy/raphael
 
 #Links
 
