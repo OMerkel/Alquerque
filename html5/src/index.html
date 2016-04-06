@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html manifest='offline.appcache'>
+<head profile='http://dublincore.org/documents/dcq-html/'>
+  <link rel='icon' href='img/icons/favicon.ico' type='image/x-icon' />
+  <link rel='schema.DC' href='http://purl.org/dc/elements/1.1/' />
+  <link rel='schema.DCTERMS' href='http://purl.org/dc/terms/' />
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+  <meta charset='UTF-8' />
+  <meta name='AUTHOR' content='Oliver Merkel' />
+  <meta name='COPYRIGHT' content='Oliver Merkel' />
+  <meta name='DC.creator' content='Oliver Merkel' />
+  <meta name='DC.contributor' content='Oliver Merkel' />
+  <meta name='DC.rights' content="
+See file named LICENSE being part of the repository.
+
+Copyright (c) 2016
+@author Oliver Merkel, Merkel(dot)Oliver(at)web(dot)de.
+All rights reserved.
+
+Logos and trademarks belong to their respective owners.
+
+All source code also including code parts written in HMTL, Javascript, CSS is under MIT License.
+
+The MIT License (MIT)
+
+Copyright (c) 2016 Oliver Merkel, Merkel(dot)Oliver(at)web(dot)de
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the &quot;Software&quot;), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+If not otherwise stated all graphics (independent of its format) are licensed under
+    http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en_US
+    Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+" />
+  <title>Alquerque</title>
+  <meta name='apple-mobile-web-app-capable' content='yes' />
+  <meta name='apple-mobile-web-app-status-bar-style' content='black' />
+  <link rel='apple-touch-icon' href='img/icons/alquerque-128.png' />
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
+    name='viewport' />
+  <link rel='stylesheet' type='text/css' href='thirdparty/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css' />
+  <link rel='stylesheet' type='text/css' href='css/index.css' />
+  <script src='thirdparty/jquery-2.1.4.js' type='text/javascript'></script>
+  <script src='thirdparty/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js' type='text/javascript'></script>
+  <script src='thirdparty/raphael-2.1.4/raphael.js' type='text/javascript'></script>
+  <script src='js/hmi.js' type='text/javascript' defer></script>
+</head>
+<body>
+<div data-role='page' data-theme='b' id='game-page' class='mybackground'>
+  <div data-role='header' data-position='fixed'>
+    <center id='myheader'>Alquerque</center>
+    <a href='#left-panel' id='customMenu' class='customMenu'
+      data-icon='custom' data-iconpos='notext'>Menu</a>
+  </div><!-- /header -->
+  <div role='main' class='mycontent ui-content'>
+      <noscript>
+        <p>This HTML5 application depends on enabled Javascript capabilities in your browser.</p>
+        <p>Please consider enabling Javascript if disabled through settings.</p>
+      </noscript>
+    <center><div id='board'></div></center>
+  </div><!-- /content -->
+  <div data-role='panel' id='left-panel' data-position='left'
+    data-display='overlay' data-theme='b'>
+    <ul data-role='listview' data-theme='b' data-divider-theme='d'
+      data-icon='false' data-global-nav='demos' class='jqm-list'>
+      <li data-icon='back' data-rel='close'><a href='#'>Back</a></li>
+      <li data-role='list-divider'>&nbsp;</li>
+      <li data-icon='star'><a id='new'>New</a></li>
+      <li data-role='list-divider'>&nbsp;</li>
+      <li data-icon='action'><a href='#rules-page' data-rel='page'
+        data-transition='pop'>Rules&#8230;</a></li>
+      <li data-icon='grid'><a href='#options-menu' data-rel='page'
+        data-transition='slideup'>Options&#8230;</a></li>
+      <li data-icon='info'><a href='#about-page' data-rel='page'
+        data-transition='pop'>About&#8230;</a></li>
+    </ul>
+  </div><!-- /panel -->
+</div><!-- /page -->
+<div data-role='page' data-theme='b' id='rules-page'>
+  <div data-role='header'>
+    <a href='#' data-rel='back' id='customBackRules'
+      class='customBack ui-btn ui-icon-custom ui-btn-icon-right ui-btn-icon-notext ui-corner-all'>Back</a>
+    <h4>Rules</h4>
+  </div><!-- /header -->
+  <div role='main' class='ui-content'>
+    <br />
+    <p>There are different rules available for Alquerque de doze.
+      The default rules as implemented here are as follows.
+      Mind that some parts of the rules might be altered through
+      selected options.</p>
+    <h2>Game Material</h2>
+    <figure class='diagram' style='float: right;'>
+      <img src='img/algebraic_notation.jpg' />
+      <figcaption>Game board with algebraic notation.</figcaption>
+    </figure>
+    <p>Alquerque is a board game. The rectangular Alquerque board has
+      fixed dimension of 5 times 5 positions horizontally and vertically.
+      Positions on board are connected by a fixed line pattern showing
+      allowed directions of movement for players’ checkers.
+      There are two opposing players: one is controlling the light
+      checkers and the other is controlling the dark checkers.</p>
+    <br clear='all' />
+    <h2>Starting Position</h2>
+    <figure class='diagram' style='float: left;'>
+      <img src='img/initial_board.jpg' />
+      <figcaption>Initial board set up. Start of game. Light to play.</figcaption>
+    </figure>
+    <p>The twelve light checkers are placed on all positions of rows 1 and 2,
+      and positions d3 and e3 initially. Thus the row 1 is referred to as
+      being the base row of the player controlling the light checkers.
+      The twelve dark checkers are placed on all positions of rows 4 and 5,
+      and positions a3 and b3 initially. Thus the row 5 is referred to as
+      being the base row of the player controlling the dark checkers.</p>
+    <br clear='all' />
+    <h2>Game Mechanics</h2>
+    <p>Alquerque is played alternating players’ turns. The player
+      controlling light checkers moves first. A player might either</p>
+    <ul>
+      <li>capture opponent’s pieces if possible or</li>
+      <li>must perform a normal non-capturing move.</li>
+    </ul>
+    <p>Passing is not allowed.</p>
+    <h2>Non-capturing Move</h2>
+    <p>Movement of checkers is performed strictly along the lines of
+      the board onto adjacent free positions.</p>
+    <p>A light checker can not move from it's position to positions
+      on rows with lower numbers. A dark checker can not move from
+      it's position to positions on rows with higher numbers.
+      Thus neither a light nor a dark checker can move backwards
+      in direction of the player's own base row.</p>
+    <p>A checker that reached the opponent's base row can not be
+      moved any longer but only capture opponent's checkers
+      if possible. Anyway the checker is allowed to perform
+      non-capturing moves again, too, if after the capture it is
+      not positioned on the opponent's base row any longer.</p>
+    <h2>Capturing Move</h2>
+    <p>Captures are compulsory. If capturing is possible on a
+      player’s turn then the player must perform a capturing move.
+      A capture can be performed in any straight direction
+      indicated by the line pattern of the board (even in
+      direction of own base row).</p>
+    <p>An opponent's checker on an adjacent position along a
+      line of an own checker is captured by jumping over it
+      in straight line onto an adjacent free position along
+      the line. Jumping to perform captures is done in straight
+      line without any change of direction. Checkers captured
+      leave the board and do not return. By each jump exactly
+      one single opponent's checker is jumped over and thus
+      captured at a time. Checkers can not jump over or capture
+      checkers of own color. Captures can be done and are mandatory
+      if available any time on own turn after the game has started.</p>
+    <p>In a player's turn multiple consecutive captures performed
+      with the same own checker are allowed and compulsory.
+      The player must continue to capture in the possible multiple
+      consecutive capture until no additional capture is possible.
+      It is not necessary to select the longest possible path
+      to capture the maximum opponent’s pieces. On alternative paths
+      the player may decide freely on which one to continue capturing.
+      After each single straight line jump if performing multiple
+      consecutive captures the direction of jumps may be changed
+      although reverse direction change is not allowed.
+      A captured checker is removed from game play instantly while
+      being jumped. Thus it can not be reused to be jumped again
+      in a multiple capture move.</p>
+    <p>Checkers can not be stacked by moving or jumping
+      on top of the other.</p>
+    <h2>Winning Conditions</h2>
+    <p>A player wins by either capturing all opponent's checkers or
+      if the opponent can not perform any legal move.
+      With given rules a tie or draw game is only possible
+      if the option <em>Inverting each pieces' own last move
+      is... allowed</em> is chosen. Per default inverting each pieces'
+      own last move is strictly forbidden.</p>
+    <br clear='all' />
+    <p>Have fun and enjoy the game&#8230;</p>
+    <a href='#' data-role='button' data-icon='back'
+      data-rel='back'>Back</a>
+  </div><!-- /content -->
+</div><!-- /page -->
+
+<div data-role='page' data-theme='b' id='options-menu'>
+  <div data-role='header'>
+    <h1><small>Options</small></h1>
+    <a href='#' data-rel='back' id='customBackOptions'
+      class='customBack ui-btn ui-icon-custom ui-btn-icon-left ui-btn-icon-notext ui-corner-all'>Close</a>
+  </div><!-- /header -->
+  <div data-role='content'>
+    <br />
+    <br />
+    <form>
+      <i>Mind: All selections will be applied on next move or new game.</i>
+      <fieldset data-role='controlgroup'>
+        <legend>Light checkers are played by&#8230;</legend>
+        <input name='playerwhite' id='playerwhitehuman'
+          checked='checked' type='radio'>
+        <label for='playerwhitehuman'>Human</label>
+        <input name='playerwhite' id='playerwhiteai'
+          type='radio'>
+        <label for='playerwhiteai'>AI</label>
+      </fieldset>
+      <fieldset data-role='controlgroup'>
+        <legend>Dark checkers are played by&#8230;</legend>
+        <input name='playerblack' id='playerblackhuman'
+          checked='checked' type='radio'>
+        <label for='playerblackhuman'>Human</label>
+        <input name='playerblack' id='playerblackai'
+          type='radio'>
+        <label for='playerblackai'>AI</label>
+      </fieldset>
+      <fieldset data-role='controlgroup'>
+        <legend>Inverting each pieces' own last move is&#8230;</legend>
+        <input name='invert' id='invertAllowed'
+          type='radio'>
+        <label for='invertAllowed'>allowed</label>
+        <input name='invert' id='invertForbidden'
+          checked='checked' type='radio'>
+        <label for='invertForbidden'>strictly forbidden</label>
+      </fieldset>
+      <i>Mind: This rule is not about the player's last move only. It covers
+        each pieces' own last move separately.</i><br />
+      <fieldset data-role='controlgroup'>
+        <legend>Available moves for human are&#8230;</legend>
+        <input name='availablemove' id='showavailablemove'
+          type='radio'>
+        <label for='showavailablemove'>shown</label>
+        <input name='availablemove' id='hideavailablemove'
+          checked='checked' type='radio'>
+        <label for='hideavailablemove'>hidden</label>
+      </fieldset>
+      <fieldset data-role='controlgroup'>
+        <legend>Algebraic board notation is&#8230;</legend>
+        <input name='algebraicnotation' id='showalgebraicnotation'
+          type='radio'>
+        <label for='showalgebraicnotation'>shown</label>
+        <input name='algebraicnotation' id='hidealgebraicnotation'
+          checked='checked' type='radio'>
+        <label for='hidealgebraicnotation'>hidden</label>
+      </fieldset>
+    </form>
+    <a href='#' data-role='button' data-icon='check'
+      data-rel='back' data-theme='c'>Ok</a>
+  </div><!-- /content -->
+</div><!-- /page -->
+
+<div data-role='page' data-theme='b' id='about-page'>
+  <div data-role='header'>
+    <a href='#' data-rel='back' id='customBackAbout'
+      class='customBack ui-btn ui-icon-custom ui-btn-icon-right ui-btn-icon-notext ui-corner-all'>Back</a>
+    <h4>About Alquerque</h4>
+  </div><!-- /header -->
+  <div role='main' class='ui-content'>
+    <figure class='author' style='float: right;'>
+      <img src='img/oliver_fanore-150809.jpg' />
+      <figcaption>Oliver Merkel, Fánóir, Ireland, <a rel='license'
+        href='http://creativecommons.org/licenses/by-nc-nd/4.0/'
+        target='_blank'>cc-by-nc-nd 4.0</a>.</figcaption>
+    </figure>
+    <br />
+    <h3>Legal</h3>
+    <p>Copyright (c) 2016<br />
+    <em>@author</em> Oliver Merkel, Merkel(dot) Oliver(at) web(dot) de.<br />
+    All rights reserved.<br />
+    Logos and trademarks belong to their respective owners.</p>
+    <p>All source code also including code parts written in HMTL, Javascript, CSS is under MIT License.</p>
+    <h4>The MIT License (MIT)</h4>
+    <p>Copyright (c) 2016 Oliver Merkel, Merkel(dot) Oliver(at) web(dot)de</p>
+
+    <p>Permission is hereby granted, free of charge, to any person obtaining a copy of
+    this software and associated documentation files (the &quot;Software&quot;), to deal in
+    the Software without restriction, including without limitation the rights to
+    use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+    the Software, and to permit persons to whom the Software is furnished to do so,
+    subject to the following conditions:</p>
+
+    <p>The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.</p>
+
+    <p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+    FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+    COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+    <p>If not otherwise stated all graphics (independent of its format) are licensed under
+      <br /><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en_US"
+      target="_blank"><img alt="Creative Commons License" style="border-width:0"
+      src="img/icons/cc_by_nc_sa.png" /></a><br />Images are licensed under a
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en_US"
+      target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+      International License</a>.
+    </p>
+    <div data-role="collapsible-set" data-theme="c" data-content-theme="d"
+      data-iconpos="right" data-collapsed-icon="arrow-l" data-expanded-icon="arrow-d">
+    <div data-role="collapsible">
+      <h4>Alquerque Principles and Concepts</h4>
+      <p><em>Alquerque</em> implements a two-player deterministic board game.</p>
+      <p>This Alquerque is a board game using Monte-Carlo Tree Search (MCTS) with UCB
+        (Upper Confidence Bounds) applied to trees (UCT in short) for the computer
+        player AI. The board game is used for demonstration purposes of the UCT
+        algorithm.</p>
+      <p>The Alquerque game belongs to the public domain due to its
+        age and unknown creator.</p>
+    </div><!-- collapsible -->
+    <div data-role='collapsible'>
+      <h4>Third Party Code Licenses</h4>
+      <p>This <b>Alquerque</b> implementation uses unmodified
+      independent code libraries provided by <em>third parties</em>.
+      Since their licenses might vary the corresponding information is
+      <em>externally linked</em> below. Thus <em>these external links</em>
+      will enable you to reproduce any copyright notice,
+      any related list of conditions, disclaimers, and especially
+      the copyright holders and authors of the corresponding third
+      party functionality.</p>
+      <a href='https://github.com/jquery/jquery' data-role='button' data-theme='c'
+        rel='external' target='_blank' type='text/html'
+        title='jQuery - Repository'>
+        <img src='thirdparty/jquery-favicon.ico' width='16' height='16' />
+        jQuery: MIT</a>
+      <a href='https://github.com/jquery/jquery-mobile' data-role='button' data-theme='c'
+        rel='external' target='_blank' type='text/html'
+        title='jQuery Mobile - Repository'>
+        <img src='thirdparty/jquery.mobile-1.4.5/demos/favicon.ico' width='16' height='16' />
+        jQuery Mobile: MIT</a>
+      <a href='https://github.com/DmitryBaranovskiy/raphael' data-role='button' data-theme='c'
+        rel='external' target='_blank' type='text/html'
+        title='Raphaël - Repository'>
+        <img src='thirdparty/raphael-2.1.4/raphael_logo.png' width='16' height='16' />
+        Raphaël: MIT</a>
+    </div><!-- collapsible -->
+    </div><!-- collapsible-set -->
+    <a href='#' data-role='button' data-icon='back'
+      data-rel='back'>Back</a>
+  </div><!-- /content -->
+</div><!-- /page -->
+</body>
+</html>
