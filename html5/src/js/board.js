@@ -143,7 +143,7 @@ AlquerqueBoard.prototype.getMoves = function () {
         for(var i=0; i<this.DIRECTION.move[this.active][x][y].length; ++i) {
           var direction = this.DIRECTION.move[this.active][x][y][i];
           if ( this.NONE == this.field[x+direction.x][y+direction.y].piece ) {
-            if( this.rules.invertlast || !this.field[x][y].previous ||
+            if( this.rules.invertLast || !this.field[x][y].previous ||
               ( x+direction.x != this.field[x][y].previous.x ||
                 y+direction.y != this.field[x][y].previous.y )
             ) {
