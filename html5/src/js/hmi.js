@@ -41,6 +41,8 @@ Hmi.prototype.resize = function () {
   var size = size / 10;
   var minSize = 38;
   size = size < minSize ? minSize : size;
+  var maxSize = 100;
+  size = maxSize < size ? maxSize : size;
   $('#customMenu').css({
     'width': size+'px', 'height': size+'px',
     'background-size': size+'px ' + size+'px',
@@ -81,7 +83,7 @@ Hmi.prototype.initBoard = function () {
 Hmi.prototype.clearFieldAt = function ( p ) {
   if( this.field[p.x][p.y] ) this.field[p.x][p.y].remove();
   var result = this.paper.rect( p.x + 0.5, 4.5 - p.y, 1, 1 );
-  result.attr({ 'stroke': 'none', fill: 'red', opacity: '0.0' });
+  result.attr({ 'stroke': 'none', fill: 'gray', opacity: 0.0 });
   return result;
 };
 
@@ -169,7 +171,6 @@ Hmi.prototype.prepareHumanMove = function () {
     var field = this.field[actions[i].from.x][actions[i].from.y];
     if(showAvailableMove) {
       console.log(actions[i].from.x + '' + actions[i].from.y);
-      
     };
     field.click( this.clickSelect.bind(this) );
   }
@@ -179,7 +180,7 @@ Hmi.prototype.requestAiAction = function () {
   /* @TODO: disable 'new game' */
   var playerWhite = $('#playerwhiteai').is(':checked') ? 'AI' : 'Human';
   var playerBlack = $('#playerblackai').is(':checked') ? 'AI' : 'Human';
-  var invertLast = $('#invertLast').is(':checked');
+  var invertLast = $('#invertAllowed').is(':checked');
   this.engine.postMessage({ class: 'request', request: 'actionbyai',
     playerwhite: playerWhite, playerblack: playerBlack,
     invertlast: invertLast });
@@ -218,6 +219,7 @@ Hmi.prototype.deactivateSelectAction = function () {
       var a = actions[i];
       if( this.isEqual( this.action.from, a.from ) ) {
         var target = this.field[a.to.x][a.to.y];
+        target.attr({ opacity: 0.0 });
         this.unbindAllEvents( target );
       }
     }
@@ -232,12 +234,8 @@ Hmi.prototype.activateSelectAction = function () {
   for(var i=0; i<actions.length; ++i) {
     var a = actions[i];
     if( this.isEqual( this.action.from, a.from ) ) {
-      if(showAvailableMove) {
-        console.log( 'Possible ' + a.type + ' from ' +
-          String.fromCharCode( a.from.x + 97 ) + (a.from.y + 1) +
-          ' to ' + String.fromCharCode( a.to.x + 97 ) + (a.to.y + 1));
-      };
       var target = this.field[a.to.x][a.to.y];
+      target.attr({opacity: showAvailableMove?0.2:0.0});
       target.click( this.clickTarget.bind(this) );
     }
   }
@@ -249,25 +247,26 @@ Hmi.prototype.clickTarget = function ( ev ) {
   var actions = this.board.actions;
   for(var i=0; i<actions.length; ++i) {
     var a = actions[i];
-    if( this.isEqual( this.action.from, a.from ) && this.isEqual( this.action.to, a.to ) ) {
-      this.action.type = a.type;
-      if( 'jump' == a.type ) {
-        this.action.over = { x: a.over.x, y: a.over.y };
+    var fieldSrc = this.field[a.from.x][a.from.y];
+    this.unbindAllEvents( fieldSrc );
+    if( this.isEqual( this.action.from, a.from ) ) {
+      var fieldTgt = this.field[a.to.x][a.to.y];
+      fieldTgt.attr({ opacity: 0.0 });
+      this.unbindAllEvents( fieldTgt );
+      if( this.isEqual( this.action.to, a.to ) ) {
+        this.action.type = a.type;
+        if( 'jump' == a.type ) {
+          this.action.over = { x: a.over.x, y: a.over.y };
+        }
       }
     }
   }
   console.log( 'Chosen ' + this.action.type + ' from ' +
     String.fromCharCode( this.action.from.x + 97 ) + ( this.action.from.y + 1) +
     ' to ' + String.fromCharCode( this.action.to.x + 97 ) + ( this.action.to.y + 1));
-  for(var x=0; x<5; ++x) {
-    for(var y=0; y<5; ++y) {
-      var field = this.field[x][y];
-      this.unbindAllEvents( field );
-    }
-  }
   var playerWhite = $('#playerwhiteai').is(':checked') ? 'AI' : 'Human';
   var playerBlack = $('#playerblackai').is(':checked') ? 'AI' : 'Human';
-  var invertLast = $('#invertLast').is(':checked');
+  var invertLast = $('#invertAllowed').is(':checked');
 
   this.engine.postMessage({ class: 'request', request: 'perform',
     action: this.action,
@@ -278,7 +277,7 @@ Hmi.prototype.clickTarget = function ( ev ) {
 Hmi.prototype.engineInit = function() {
   var playerWhite = $('#playerwhiteai').is(':checked') ? 'AI' : 'Human';
   var playerBlack = $('#playerblackai').is(':checked') ? 'AI' : 'Human';
-  var invertLast = $('#invertLast').is(':checked');
+  var invertLast = $('#invertAllowed').is(':checked');
 
   this.engine = new Worker('js/controller.js');
   this.engine.addEventListener('message', this.engineEventListener.bind(this), false);
@@ -304,7 +303,7 @@ Hmi.prototype.restart = function() {
   this.deactivateClicks();
   var playerWhite = $('#playerwhiteai').is(':checked') ? 'AI' : 'Human';
   var playerBlack = $('#playerblackai').is(':checked') ? 'AI' : 'Human';
-  var invertLast = $('#invertLast').is(':checked');
+  var invertLast = $('#invertAllowed').is(':checked');
 
   this.engine.postMessage({ class: 'request', request: 'restart',
     playerwhite: playerWhite, playerblack: playerBlack,
