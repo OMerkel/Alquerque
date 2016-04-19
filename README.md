@@ -1,6 +1,8 @@
 <img alt="Alquerque icon" width="64" src="html5/src/img/icons/alquerque-64.png" /> Alquerque
 ====================
 
+* <em>Start an online</em> <b>Alquerque</b> <em>session on</em> http://omerkel.github.io/Alquerque/html5/src
+
 Alquerque - 2 player abstract strategic perfect information
 traditional board game with computer AI option.
 
