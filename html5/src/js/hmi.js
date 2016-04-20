@@ -255,6 +255,8 @@ Hmi.prototype.clickTarget = function ( ev ) {
       this.unbindAllEvents( fieldTgt );
       if( this.isEqual( this.action.to, a.to ) ) {
         this.action.type = a.type;
+        this.action.by = a.by;
+        this.action.direction = { x: a.direction.x, y: a.direction.y };
         if( 'jump' == a.type ) {
           this.action.over = { x: a.over.x, y: a.over.y };
         }
