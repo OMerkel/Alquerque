@@ -278,11 +278,12 @@ AlquerqueBoard.prototype.getState = function () {
     field[field.length] = column;
   }
   var actions = this.getActions();
+  /*
   console.log( this.repr() );
   console.log( 0 == actions ? "Game over. " +
     ( this.active == this.WHITE ? 'Black' : 'White' ) + ' wins.' :
     ( this.active == this.WHITE ? 'White' : 'Black' ) + ' to play.' );
+   */
   return { square: field, turn: this.active,
-    actions: actions, previous: this.previousAction /*,
-    count: this.getStatistics() */ };
+    actions: actions, previous: this.previousAction };
 };
