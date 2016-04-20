@@ -235,7 +235,7 @@ Hmi.prototype.activateSelectAction = function () {
     var a = actions[i];
     if( this.isEqual( this.action.from, a.from ) ) {
       var target = this.field[a.to.x][a.to.y];
-      target.attr({opacity: showAvailableMove?0.2:0.0});
+      target.attr({opacity: showAvailableMove?0.4:0.0});
       target.click( this.clickTarget.bind(this) );
     }
   }
