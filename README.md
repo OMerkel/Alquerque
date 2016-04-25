@@ -2,6 +2,10 @@
 ====================
 
 * <em>Start an online</em> <b>Alquerque</b> <em>session on</em> http://omerkel.github.io/Alquerque/html5/src
+* <em>Also published in</em> <a href="https://marketplace.firefox.com/app/alquerque"><img align="middle" width="150px" src="https://marketplace.cdn.mozilla.net/media/fireplace/img/pretty/marketplace_logo.png" /></a>
+* <em>Runs in various browsers on</em>
+    * <em>desktop systems like BSDs, Linux, Win, MacOS and</em>
+    * <em>mobile platforms like Android, FirefoxOS, iOS.</em>
 
 Alquerque - 2 player abstract strategic perfect information
 traditional board game with computer AI option.
