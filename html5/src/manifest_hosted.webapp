@@ -3,7 +3,6 @@
   "name": "Alquerque",
   "description": "Alquerque de Doze board game with optional AI",
   "launch_path": "/Alquerque/html5/src/index.html",
-  "appcache_path": "/Alquerque/html5/src/offline.appcache",
   "icons": {
     "16": "/Alquerque/html5/src/img/icons/alquerque16.png",
     "32": "/Alquerque/html5/src/img/icons/alquerque32.png",
