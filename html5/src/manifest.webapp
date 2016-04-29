@@ -4,15 +4,15 @@
   "description": "Alquerque de Doze board game with optional AI",
   "launch_path": "/index.html",
   "icons": {
-    "16": "/img/icons/alquerque-16.png",
-    "32": "/img/icons/alquerque-32.png",
-    "48": "/img/icons/alquerque-48.png",
-    "60": "/img/icons/alquerque-60.png",
-    "64": "/img/icons/alquerque-64.png",
-    "90": "/img/icons/alquerque-90.png",
-    "120": "/img/icons/alquerque-120.png",
-    "128": "/img/icons/alquerque-128.png",
-    "256": "/img/icons/alquerque-256.png"
+    "16": "/img/icons/alquerque16.png",
+    "32": "/img/icons/alquerque32.png",
+    "48": "/img/icons/alquerque48.png",
+    "60": "/img/icons/alquerque60.png",
+    "64": "/img/icons/alquerque64.png",
+    "90": "/img/icons/alquerque90.png",
+    "120": "/img/icons/alquerque120.png",
+    "128": "/img/icons/alquerque128.png",
+    "256": "/img/icons/alquerque256.png"
   },
   "developer": {
     "name": "Oliver Merkel",

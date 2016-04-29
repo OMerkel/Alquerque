@@ -2,15 +2,15 @@ CACHE MANIFEST
 # v0.1
 
 css/index.css
-img/icons/alquerque-16.png
-img/icons/alquerque-32.png
-img/icons/alquerque-48.png
-img/icons/alquerque-60.png
-img/icons/alquerque-64.png
-img/icons/alquerque-90.png
-img/icons/alquerque-120.png
-img/icons/alquerque-128.png
-img/icons/alquerque-256.png
+img/icons/alquerque16.png
+img/icons/alquerque32.png
+img/icons/alquerque48.png
+img/icons/alquerque60.png
+img/icons/alquerque64.png
+img/icons/alquerque90.png
+img/icons/alquerque120.png
+img/icons/alquerque128.png
+img/icons/alquerque256.png
 img/icons/cc_by_nc_sa.png
 img/icons/favicon.ico
 img/icons/icon-bars.svg
