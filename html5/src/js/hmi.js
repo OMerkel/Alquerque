@@ -34,6 +34,8 @@ Hmi.prototype.resize = function () {
     availableHeight = window.innerHeight - offsetHeight;
   var size = Math.min(availableWidth, availableHeight);
   this.paper.setSize( size, size );
+  var boardMarginTop = (availableHeight - size) / 2;
+  $('#board').css({ 'margin-top': boardMarginTop + 'px' });
 
   $('#game-page').css({
     'background-size': 'auto ' + (size/6) + 'px',
@@ -310,6 +312,7 @@ Hmi.prototype.restart = function() {
   this.engine.postMessage({ class: 'request', request: 'restart',
     playerwhite: playerWhite, playerblack: playerBlack,
     invertlast: invertLast });
+  $( '#left-panel' ).panel( 'close' );
 };
 
 Hmi.prototype.engineEventListener = function( eventReceived ) {
