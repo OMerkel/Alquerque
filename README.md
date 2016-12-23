@@ -81,12 +81,12 @@ being the base row of the player controlling the dark checkers.
 ##Game Mechanics
 
 Alquerque is played alternating players’ turns. The player
-controlling light checkers moves first. A player might either
+controlling light checkers moves first. A player either
 
-* capture opponent’s pieces if possible or
-* must perform a normal non-capturing move.
+* must capture opponent’s pieces if possible or
+* must perform a normal non-capturing move otherwise.
 
-Passing is not allowed.
+Passing a turn is not allowed.
 
 ##Non-capturing Move
  
