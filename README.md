@@ -40,21 +40,21 @@ Upper Confidence Bounds (UCB), UCB applied to trees (UCT), AI,
 2-player board game, deterministic game with perfect information,
 JavaScript, ECMAScript, W3C WebWorker_ 
 
-#Description
+# Description
 
 This Alquerque is a board game using Monte-Carlo Tree Search (MCTS) with
 UCB (Upper Confidence Bounds) applied to trees (UCT in short) for the
 computer player AI. The board game is used for demonstration purposes of
 the UCT algorithm.
 
-#Rules
+# Rules
 
 There are different rules available for Alquerque de doze.
 The default rules as implemented here are as follows.
 Mind that some parts of the rules might be altered through
 selected options.
 
-##Game Material
+## Game Material
 
 <img width='30%' ondragstart='return false;' alt='Game board with algebraic notation, Creative Commons License, This image is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.' src='html5/src/img/algebraic_notation.jpg' />
 
@@ -67,7 +67,7 @@ in the line pattern. There are two opposing players: one is
 controlling the light checkers and the other is controlling
 the dark checkers.
 
-##Starting Position
+## Starting Position
 
 <img width='30%' ondragstart='return false;' alt='Initial board set up, Creative Commons License, This image is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.' src='html5/src/img/initial_board.jpg' />
 
@@ -78,7 +78,7 @@ The twelve dark checkers are placed on all positions of rows 4 and 5,
 and positions a3 and b3 initially. Thus the row 5 is referred to as
 being the base row of the player controlling the dark checkers.
 
-##Game Mechanics
+## Game Mechanics
 
 Alquerque is played alternating players’ turns. The player
 controlling light checkers moves first. A player either
@@ -88,7 +88,7 @@ controlling light checkers moves first. A player either
 
 Passing a turn is not allowed.
 
-##Non-capturing Move
+## Non-capturing Move
  
 Movement of checkers is performed strictly along the lines of
 the board onto adjacent free positions.
@@ -105,7 +105,7 @@ if possible. Anyway the checker is allowed to perform
 non-capturing moves again, too, if after the capture it is
 not positioned on the opponent's base row any longer.
 
-##Capturing Move
+## Capturing Move
 
 Captures are compulsory. If capturing is possible on a
 player’s turn then the player must perform a capturing move.
@@ -141,7 +141,7 @@ in a multiple capture move.
 Checkers can not be stacked by moving or jumping
 on top of the other.
 
-##Winning Conditions
+## Winning Conditions
 
 A player wins by either capturing all opponent's checkers or
 if the opponent can not perform any legal move.
@@ -150,7 +150,7 @@ if the option _Inverting each pieces' own last move
 is... allowed_ is chosen. Per default inverting each pieces'
 own last move is strictly forbidden.
 
-#References
+# References
 
 * Guillaume Maurice Jean-Bernard Chaslot, "[Monte-Carlo Tree Search](https://project.dke.maastrichtuniversity.nl/games/files/phd/Chaslot_thesis.pdf)", PHD Proefschrift, Universiteit Maastricht, NL, 2010.
 * Guillaume Chaslot, Sander Bakkes, Istvan Szita and Pieter Spronck, "[Monte-Carlo Tree Search: A New Framework for Game AI](http://sander.landofsand.com/publications/AIIDE08_Chaslot.pdf)", in Proceedings of the Fourth Artificial Intelligence and Interactive Digital Entertainment Conference, Stanford, California, 2008. Published by The AAAI Press, Menlo Park, California.
@@ -168,7 +168,7 @@ own last move is strictly forbidden.
 * jQuery Mobile: MIT licensed, https://github.com/jquery/jquery-mobile
 * Raphaël: MIT licensed, https://github.com/DmitryBaranovskiy/raphael
 
-#Links
+# Links
 
 * Association for the Advancement of Artificial Intelligence, http://www.aaai.org
 * HTML Living Standard, Web Workers, https://html.spec.whatwg.org
@@ -176,7 +176,7 @@ own last move is strictly forbidden.
 * Alphonso X - Book of Games - A Game Researcher's Resource, http://historicgames.com/alphonso
 * Board Game Studies Journal, http://bgsj.ludus-opuscula.org
 
-#Contributors / Authors
+# Contributors / Authors
 
 <table>
   <tr>
