@@ -14,7 +14,7 @@ traditional board game with computer AI option.*
 
 ## Abstract
 
-_Alquerque - a board game demonstrator with computer AI using
+_Alquerque is a board game demonstrator with computer AI using
 Monte-Carlo Tree Search (MCTS) with UCB (Upper Confidence Bounds)
 applied to trees (UCT in short). Alquerque is a medieval Spanish
 board game closely influenced and originated from the Middle East
