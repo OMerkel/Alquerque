@@ -9,8 +9,8 @@
     * <em>desktop systems like BSDs, Linux, Win, MacOS and</em>
     * <em>mobile platforms like Android, FirefoxOS, iOS.</em>
 
-Alquerque - 2 player abstract strategic perfect information
-traditional board game with computer AI option.
+**Alquerque** - *2 player abstract strategic perfect information
+traditional board game with computer AI option.*
 
 ## Abstract
 
