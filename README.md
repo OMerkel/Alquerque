@@ -236,6 +236,8 @@ Development dependencies (not shipped, see `package.json`):
 Open <http://omerkel.github.io/Alquerque/html5/src>, or serve the sources
 locally and open <http://localhost:4173/index.html>:
 
+_Mind_: The port number of your local server is a matter of your environment settings. 
+
 ```sh
 npm run serve
 ```
