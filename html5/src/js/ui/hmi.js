@@ -48,6 +48,9 @@ export const createHmi = ({ doc, view, engine, win = globalThis }) => {
     boardElement.style.marginTop = `${(win.innerHeight - OFFSET_HEIGHT - size) / 2}px`;
     doc.getElementById('game-page').style.backgroundSize = `auto ${size / 6}px`;
     const icon = iconSize(size);
+    doc
+      .getElementById('game-page')
+      .style.setProperty('--game-title-bar-height', `${Math.max(OFFSET_HEIGHT, icon + 6)}px`);
     for (const id of ICON_IDS) {
       const node = doc.getElementById(id);
       if (node === null) continue;
@@ -96,7 +99,9 @@ export const createHmi = ({ doc, view, engine, win = globalThis }) => {
     deactivateSelection();
     selection = { from: pointOf(event.currentTarget) };
     view.setSourceSelected(selection.from, true);
-    const reversal = board.reversals?.find((candidate) => samePoint(selection.from, candidate.from));
+    const reversal = board.reversals?.find((candidate) =>
+      samePoint(selection.from, candidate.from)
+    );
     view.setForbiddenReversal(reversal?.to ?? null);
     activateSelection();
   };
@@ -124,6 +129,7 @@ export const createHmi = ({ doc, view, engine, win = globalThis }) => {
     resize();
     clearSourceHighlights();
     view.setForbiddenReversal(null);
+    view.setCelebration(null);
     const options = readOptions(doc);
     view.showNotation(options.showalgebraicnotation);
     const badge = activePlayerBadge(next.turn, options);
@@ -135,9 +141,13 @@ export const createHmi = ({ doc, view, engine, win = globalThis }) => {
     if (actionInfo) {
       view.animateAction(actionInfo.action, () => {
         view.setLastMove(actionInfo.action);
+        view.setCelebration(next.outcome ?? null);
         continueTurn();
       });
-    } else continueTurn();
+    } else {
+      view.setCelebration(next.outcome ?? null);
+      continueTurn();
+    }
   };
 
   const restart = () => {
@@ -157,6 +167,7 @@ export const createHmi = ({ doc, view, engine, win = globalThis }) => {
     }
     if (data.request === 'restore') {
       view.setLastMove(null);
+      view.setCelebration(null);
       view.restoreInitial();
       return true;
     }

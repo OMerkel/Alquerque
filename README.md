@@ -64,6 +64,9 @@ The game view exposes turn and move state directly on the board:
   empty source and a solid ring marks the pawn at its target.
 * Pawn movement is a two-part soft jump. The pawn moves and grows toward the
   midpoint, then moves to the target while shrinking to its normal size.
+* When the game ends, a translucent celebration panel immediately below the
+  title bar congratulates the light or dark winner and states whether all
+  opposing pawns were captured or the opponent had no legal move.
 
 ## Rules
 
@@ -265,7 +268,7 @@ npx playwright install chromium
 | `npm run test:e2e` | end to end tests in Chromium (Playwright, starts the server itself) |
 | `npm run ci` | lint, coverage and end to end tests in the order used by the build server |
 
-The current automated baseline contains 192 unit tests and 9 Chromium end to
+The current automated baseline contains 198 unit tests and 10 Chromium end to
 end tests. Coverage thresholds are 96 % for statements, branches, functions and
 lines.
 

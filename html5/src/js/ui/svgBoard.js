@@ -55,6 +55,12 @@ export const createBoardView = (
   });
   svg.classList.add('alquerque-paper');
 
+  const celebration = doc.createElement('div');
+  celebration.className = 'winning-celebration';
+  celebration.setAttribute('role', 'status');
+  celebration.setAttribute('aria-live', 'polite');
+  celebration.hidden = true;
+
   const image = (href, attributes) => {
     const node = element('image', attributes);
     node.setAttributeNS(XLINK_NS, 'xlink:href', href);
@@ -65,7 +71,7 @@ export const createBoardView = (
   const notationBoard = image(FILEBOARDNOTATION, { x: 0, y: 0, width: VIEWBOX, height: VIEWBOX });
   const plainBoard = image(FILEBOARD, { x: 0, y: 0, width: VIEWBOX, height: VIEWBOX });
   svg.append(notationBoard, plainBoard);
-  container.replaceChildren(svg);
+  container.replaceChildren(svg, celebration);
 
   const field = Array.from({ length: SIZE }, () => new Array(SIZE).fill(null));
   const listeners = new Map();
@@ -291,6 +297,24 @@ export const createBoardView = (
     forbiddenReversalMarker = marker;
   };
 
+  const setCelebration = (outcome) => {
+    celebration.hidden = outcome === null;
+    if (outcome === null) {
+      celebration.replaceChildren();
+      return;
+    }
+    const winner = outcome.winner === WHITE ? 'Light' : 'Dark';
+    const loser = outcome.winner === WHITE ? 'Dark' : 'Light';
+    const heading = doc.createElement('strong');
+    heading.textContent = `Congratulations, ${winner}!`;
+    const reason = doc.createElement('span');
+    reason.textContent =
+      outcome.reason === 'all-pawns-captured'
+        ? `All ${loser.toLowerCase()} pawns were captured.`
+        : `${loser} has no legal move.`;
+    celebration.replaceChildren(heading, reason);
+  };
+
   restoreInitial();
 
   return {
@@ -309,6 +333,7 @@ export const createBoardView = (
     setSourceSelected,
     setLastMove,
     setForbiddenReversal,
+    setCelebration,
     placeEmpty,
     placePiece
   };

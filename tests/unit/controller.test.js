@@ -40,6 +40,7 @@ describe('board snapshot', () => {
     expect(board.square[0][4]).toBe(BLACK);
     expect(board.actions).toHaveLength(4);
     expect(board.reversals).toEqual([]);
+    expect(board.outcome).toBeNull();
     expect(board.nextishuman).toBe(true);
     expect(board.previous).toBeNull();
   });
@@ -58,6 +59,19 @@ describe('board snapshot', () => {
     expect(describeBoard(state, { invertLast: false }, AI_WHITE).nextishuman).toBe(false);
     const empty = stateFrom(['.....', '.....', '.....', '.....', '.....']);
     expect(describeBoard(empty, { invertLast: false }, HUMANS).nextishuman).toBe(false);
+  });
+
+  it('describes the winner and why the game ended', () => {
+    const captured = stateFrom(['.....', '.....', '.....', '.....', '....b']);
+    expect(describeBoard(captured, { invertLast: false }, HUMANS).outcome).toEqual({
+      winner: BLACK,
+      reason: 'all-pawns-captured'
+    });
+    const immobilised = stateFrom(['w....', '.....', '.....', '.....', '....b']);
+    expect(describeBoard(immobilised, { invertLast: false }, HUMANS).outcome).toEqual({
+      winner: BLACK,
+      reason: 'no-legal-move'
+    });
   });
 });
 

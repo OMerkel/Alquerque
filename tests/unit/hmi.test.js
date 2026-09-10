@@ -68,6 +68,9 @@ describe('hmi', () => {
     expect(doc.querySelector('#board svg').getAttribute('width')).toBe('536');
     expect(doc.getElementById('board').style.marginTop).toBe('0px');
     expect(doc.getElementById('game-page').style.backgroundSize).toBe(`auto ${536 / 6}px`);
+    expect(doc.getElementById('game-page').style.getPropertyValue('--game-title-bar-height')).toBe(
+      '64px'
+    );
     expect(doc.getElementById('customMenu').style.width).toBe('53.6px');
     expect(doc.getElementById('customBackAbout').style.backgroundSize).toBe('53.6px 53.6px');
   });
@@ -212,6 +215,24 @@ describe('hmi', () => {
     expect(view.at({ x: 2, y: 2 }).getAttribute('href')).toContain('light');
     expect(view.svg.querySelectorAll('.last-move-ring')).toHaveLength(2);
     expect(engine.posted).toHaveLength(0);
+  });
+
+  it('shows the winning celebration for a finished game', () => {
+    const { doc, hmi } = setup();
+    hmi.update(
+      {
+        turn: 1,
+        actions: [],
+        reversals: [],
+        nextishuman: false,
+        outcome: { winner: 0, reason: 'no-legal-move' }
+      },
+      null
+    );
+    const panel = doc.querySelector('.winning-celebration');
+    expect(panel.hidden).toBe(false);
+    expect(panel.textContent).toContain('Congratulations, Light!');
+    expect(panel.textContent).toContain('Dark has no legal move.');
   });
 
   it('restarts the game and drops the selection', () => {

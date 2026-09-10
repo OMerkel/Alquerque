@@ -141,6 +141,21 @@ describe('board view', () => {
     expect(board.svg.querySelector('.forbidden-reversal')).toBeNull();
   });
 
+  it('shows and clears winning celebrations with their reason', () => {
+    const { board, doc } = view();
+    const panel = doc.querySelector('.winning-celebration');
+    expect(panel.hidden).toBe(true);
+    board.setCelebration({ winner: WHITE, reason: 'all-pawns-captured' });
+    expect(panel.hidden).toBe(false);
+    expect(panel.textContent).toContain('Congratulations, Light!');
+    expect(panel.textContent).toContain('All dark pawns were captured.');
+    board.setCelebration({ winner: BLACK, reason: 'no-legal-move' });
+    expect(panel.textContent).toContain('Congratulations, Dark!');
+    expect(panel.textContent).toContain('Light has no legal move.');
+    board.setCelebration(null);
+    expect(panel.hidden).toBe(true);
+  });
+
   it('binds and unbinds click handlers', () => {
     const { board, win } = view();
     let clicks = 0;

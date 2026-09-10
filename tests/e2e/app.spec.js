@@ -76,6 +76,31 @@ test('animates the pawn while lifting it toward the midpoint', async ({ page }) 
   expect(transform.translateY).toBeGreaterThan(-0.5);
 });
 
+test('shows a winning celebration below the title bar', async ({ page }) => {
+  const panel = page.locator('.winning-celebration');
+  await expect(panel).toBeHidden();
+  await page.evaluate(async () => {
+    const { createBoardView } = await import('/js/ui/svgBoard.js');
+    const view = createBoardView(document.getElementById('board'));
+    view.setSize(320);
+    view.setCelebration({ winner: 0, reason: 'no-legal-move' });
+  });
+
+  await expect(panel).toBeVisible();
+  await expect(panel).toContainText('Congratulations, Light!');
+  await expect(panel).toContainText('Dark has no legal move.');
+  await expect(panel).toHaveCSS('opacity', '0.7');
+  await expect(panel).toHaveCSS('border-width', '1px');
+  await expect(panel).toHaveCSS('border-color', 'rgb(239, 179, 102)');
+  await expect(panel).toHaveCSS('border-radius', '8px');
+  const panelBounds = await panel.boundingBox();
+  const boardBounds = await page.locator('#board svg').boundingBox();
+  const menuBounds = await page.locator('#customMenu').boundingBox();
+  expect(panelBounds.x + panelBounds.width / 2).toBeCloseTo(boardBounds.x + boardBounds.width / 2);
+  expect(panelBounds.y - menuBounds.y - menuBounds.height).toBeGreaterThanOrEqual(4);
+  expect(panelBounds.y - menuBounds.y - menuBounds.height).toBeLessThanOrEqual(10);
+});
+
 test('opens and closes the sidebar menu', async ({ page }) => {
   const panel = page.locator('#left-panel');
   await expect(panel).toBeHidden();

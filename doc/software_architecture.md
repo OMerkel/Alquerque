@@ -238,6 +238,7 @@ classDiagram
     +setSourceSelected(point, selected)
     +setLastMove(action)
     +setForbiddenReversal(point)
+    +setCelebration(outcome)
   }
 
   class navigation {
@@ -371,7 +372,8 @@ Every one of these is a plain, freely copyable value; nothing carries behaviour.
 | `Action` | `{ type: 'move'\|'jump', by, from, direction, to, over? }` | `over` only present for `'jump'` |
 | `State` | `{ field, active, previousAction }` | the whole game position, replaced on every action |
 | `Rules` | `{ invertLast: boolean }` | the only rule variant offered by the Options page |
-| `Board` | `{ square, turn, actions, reversals, previous, nextishuman }` | the snapshot sent to the HMI; `reversals` contains rule-blocked `{ from, to }` pairs |
+| `Board` | `{ square, turn, actions, reversals, previous, nextishuman, outcome }` | the snapshot sent to the HMI; `reversals` contains rule-blocked `{ from, to }` pairs; terminal `outcome` contains `winner` and `reason` |
+| `Outcome` | `{ winner: WHITE\|BLACK, reason: 'all-pawns-captured'\|'no-legal-move' }` | terminal result used for the winning celebration; `null` while play continues |
 | `ActionInfo` | `{ action, info }` | chosen action plus a diagnostic string |
 
 ---
@@ -643,6 +645,7 @@ sequenceDiagram
   else next player is AI
     Hmi->>W: {request:'actionbyai', options}
   else no actions left
+    Hmi->>Paper: show celebration with winner and reason
     Note over Hmi: game over — no handlers bound, board frozen
   end
 ```
@@ -927,6 +930,16 @@ and no capture supersedes normal moves. Selecting its `from` checker calls
 `setForbiddenReversal(to)`, which appends a pointer-transparent red SVG X above
 the board. Changing selection, submitting a move, redraw and restart remove it.
 
+The board container also owns `.winning-celebration`, an HTML status overlay
+fixed immediately below the title bar and horizontally centred over the SVG.
+`hmi.resize()` publishes the responsive control height through
+`--game-title-bar-height`, leaving a small stable gap below the title controls.
+A terminal board snapshot carries
+the winning side and either `all-pawns-captured` or `no-legal-move`. The HMI
+reveals the panel after the final move animation, or immediately for a terminal
+redraw without an action. `restore` hides it. The panel uses 70 % opacity,
+rounded corners and a thin light-orange border.
+
 ### 8.5 Responsive layout
 
 `hmi.resize()` is bound to `window.resize` and additionally called at the start
@@ -1009,7 +1022,6 @@ uses real time where it verifies CSS transition interpolation.
 | Item | Location | Effect |
 | --- | --- | --- |
 | `actionInfo.info` is not displayed | `hmi.update` | the nodes/sec figure is computed but never shown |
-| No end-of-game message | `hmi.update` | game over is only recognisable by the board becoming inert |
 | `'response'` message class unused | both sides | reserved extension point |
 | `Random` engine not wired to a request | `controller.js` | the alternative provider exists but is not selectable |
 | UCB perspective inside jump chains | `uct.update` | see section 5.4 and [engine_mcts_ucb.md](engine_mcts_ucb.md) section 2.4 |
@@ -1033,7 +1045,7 @@ flowchart LR
   C2 --> V1
   C3 --> V1
   C4 --> O1["Options page:<br/>'Inverting each pieces' own last move is…'"]
-  C5 --> V2["Board becomes inert"]
+  C5 --> V2["Celebration shows winner and reason<br/>board becomes inert"]
   R1 --> D1["Rules page (#rules-page)<br/>same text, full screen"]
   R2 --> D1
   R3 --> D1

@@ -15,6 +15,7 @@ import {
   pieceAt,
   SIZE
 } from '../core/board.js';
+import { opponent } from '../core/directions.js';
 import { getActionInfo } from '../engine/uct.js';
 
 export const MAX_ITERATIONS = 8000;
@@ -29,6 +30,17 @@ const squareOf = (state) =>
 
 const isHuman = (data, turn) => (turn === BLACK ? data.playerblack : data.playerwhite) === 'Human';
 
+const outcomeOf = (state, actions) => {
+  if (actions.length > 0) return null;
+  const loserHasPieces = state.field.some((column) =>
+    column.some((occupant) => occupant?.piece === state.active)
+  );
+  return {
+    winner: opponent(state.active),
+    reason: loserHasPieces ? 'no-legal-move' : 'all-pawns-captured'
+  };
+};
+
 export const describe = (state, rules, data) => {
   const actions = getActions(state, rules);
   return {
@@ -37,6 +49,7 @@ export const describe = (state, rules, data) => {
     actions,
     reversals: getForbiddenReversals(state, rules),
     previous: state.previousAction,
+    outcome: outcomeOf(state, actions),
     nextishuman: actions.length > 0 && isHuman(data, state.active)
   };
 };

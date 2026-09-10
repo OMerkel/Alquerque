@@ -125,7 +125,7 @@ pure functions over an immutable state value.
 | FR-CT-03 | `perform` applies a human action and answers with the new position. | T | `controller.test.js › applies a human action and redraws` |
 | FR-CT-04 | `actionbyai` lets the engine choose, applies the action and answers with the new position. | T | `controller.test.js › lets the engine choose and apply an action` |
 | FR-CT-05 | `restart` resets to the initial position and answers `restore` followed by `redraw`. | T | `controller.test.js › restores the initial position on restart`, `e2e › starts a new game from the sidebar` |
-| FR-CT-06 | The snapshot sent to the HMI contains the position, the player to move, all legal actions, reversals blocked by the active rules, the previous action and whether a human moves next. | T | `controller.test.js › describes square, turn, actions and who plays next`, `controller.test.js › describes reversals forbidden by the active rule` |
+| FR-CT-06 | The snapshot sent to the HMI contains the position, the player to move, all legal actions, reversals blocked by the active rules, the previous action, whether a human moves next and, at game end, the winner and winning reason. | T | `controller.test.js › describes square, turn, actions and who plays next`, `controller.test.js › describes reversals forbidden by the active rule`, `controller.test.js › describes the winner and why the game ended` |
 | FR-CT-07 | `nextishuman` is false for an AI player and for a finished game. | T | `controller.test.js › marks the next turn as non human for the AI and for a finished game` |
 | FR-CT-08 | Unknown requests and foreign message classes are ignored without side effects. | T | `controller.test.js › ignores unknown requests and foreign message classes` |
 | FR-CT-09 | The invert-last rule option is applied to the model before the action is evaluated. | T | `controller.test.js › lets the engine choose and apply an action` |
@@ -154,6 +154,7 @@ pure functions over an immutable state value.
 | FR-VW-08 | The board image with algebraic notation can be shown or hidden. | T | `svgBoard.test.js › shows and hides the algebraic notation board`, `e2e › applies an option chosen on the options subpage` |
 | FR-VW-09 | A compact, horizontally padded badge on the right of the title bar shows the active player's configured type and side: human/AI and south/light or north/dark. It has a dark background, rounded corners, a light-orange border and a small rotating spinner to the left of the symbol. | T | `hmi.test.js › shows the active player and configured player type in the title bar`, `e2e › renders the initial position on the game page`, `e2e › updates the active-player badge after a move` |
 | FR-VW-10 | The last move remains highlighted in light blue after animation: its empty source has a dashed ring and its occupied target has a solid ring, both at half the selectable-source stroke width. | T | `svgBoard.test.js › marks the last move with dashed source and solid target rings`, `e2e › updates the active-player badge after a move` |
+| FR-VW-11 | At game end, a celebration panel is displayed immediately below the title bar with a small gap, horizontally centred over the board. It congratulates the light or dark winner and states whether all opposing pawns were captured or the opponent had no legal move. The panel has 70 % opacity, rounded corners and a thin contrasting border. | T | `controller.test.js › describes the winner and why the game ended`, `svgBoard.test.js › shows and clears winning celebrations with their reason`, `hmi.test.js › shows the winning celebration for a finished game`, `e2e › shows a winning celebration below the title bar` |
 
 ### 2.6 IN — Interaction
 
@@ -282,15 +283,15 @@ pure functions over an immutable state value.
 | Rules and state | [tests/unit/board.test.js](../tests/unit/board.test.js) | FR-GM-02 … FR-GM-19, FR-OP-02 |
 | UCT engine | [tests/unit/uct.test.js](../tests/unit/uct.test.js) | FR-EN-01 … FR-EN-08, NFR-EN-01, NFR-QA-02 |
 | Random engine | [tests/unit/random.test.js](../tests/unit/random.test.js) | FR-EN-07, FR-EN-08, FR-EN-09 |
-| Controller | [tests/unit/controller.test.js](../tests/unit/controller.test.js) | FR-CT-01 … FR-CT-09, FR-IF-03, FR-IF-05, FR-OP-06 |
+| Controller | [tests/unit/controller.test.js](../tests/unit/controller.test.js) | FR-CT-01 … FR-CT-09, FR-IF-03, FR-IF-05, FR-VW-11, FR-OP-06 |
 | Worker entry | [tests/unit/entry.test.js](../tests/unit/entry.test.js) | FR-CT-01 |
 | Options | [tests/unit/options.test.js](../tests/unit/options.test.js) | FR-IF-01, FR-OP-01 … FR-OP-04 |
-| Board view | [tests/unit/svgBoard.test.js](../tests/unit/svgBoard.test.js) | FR-VW-01 … FR-VW-08, FR-VW-10, NFR-VW-01, NFR-VW-02 |
-| Interaction | [tests/unit/hmi.test.js](../tests/unit/hmi.test.js) | FR-IN-01 … FR-IN-06, FR-IN-08, FR-IF-01, FR-IF-02, FR-IF-04, FR-VW-09, FR-VW-10, FR-NV-11, FR-OP-03, FR-OP-05, NFR-VW-04 |
+| Board view | [tests/unit/svgBoard.test.js](../tests/unit/svgBoard.test.js) | FR-VW-01 … FR-VW-08, FR-VW-10, FR-VW-11, NFR-VW-01, NFR-VW-02 |
+| Interaction | [tests/unit/hmi.test.js](../tests/unit/hmi.test.js) | FR-IN-01 … FR-IN-06, FR-IN-08, FR-IF-01, FR-IF-02, FR-IF-04, FR-VW-09 … FR-VW-11, FR-NV-11, FR-OP-03, FR-OP-05, NFR-VW-04 |
 | Navigation | [tests/unit/navigation.test.js](../tests/unit/navigation.test.js) | FR-NV-01 … FR-NV-08 |
 | Form controls | [tests/unit/controls.test.js](../tests/unit/controls.test.js) | FR-NV-09, FR-NV-10 |
 | Bootstrap | [tests/unit/main.test.js](../tests/unit/main.test.js) | FR-PL-02 … FR-PL-04, FR-IN-08, FR-NV-11 |
-| End to end | [tests/e2e/app.spec.js](../tests/e2e/app.spec.js) | FR-PL-01, FR-VW-01, FR-VW-04, FR-VW-08 … FR-VW-10, FR-IN-07, FR-IN-08, FR-GM-13, FR-NV-02, FR-NV-03, FR-NV-05 … FR-NV-07, FR-NV-10, FR-OP-05, NFR-VW-01, NFR-PL-01, NFR-QA-02, NFR-QA-03 |
+| End to end | [tests/e2e/app.spec.js](../tests/e2e/app.spec.js) | FR-PL-01, FR-VW-01, FR-VW-04, FR-VW-08 … FR-VW-11, FR-IN-07, FR-IN-08, FR-GM-13, FR-NV-02, FR-NV-03, FR-NV-05 … FR-NV-07, FR-NV-10, FR-OP-05, NFR-VW-01, NFR-PL-01, NFR-QA-02, NFR-QA-03 |
 | Static analysis | `npm run lint` (Biome, markdownlint) | NFR-CI-01 … NFR-CI-03 |
 | Pipeline | `npm run ci`, [.github/workflows/ci.yml](../.github/workflows/ci.yml) | NFR-CI-04 |
 
@@ -298,7 +299,7 @@ pure functions over an immutable state value.
 
 | Method | Count | Requirements |
 | --- | --- | --- |
-| `T` automated test | 97 | all FR except FR-PL-05; NFR-EN-01, NFR-VW-01, NFR-VW-02, NFR-VW-04, NFR-PL-01, NFR-PL-06, NFR-QA-01 … NFR-QA-04, NFR-CI-01 … NFR-CI-04 |
+| `T` automated test | 98 | all FR except FR-PL-05; NFR-EN-01, NFR-VW-01, NFR-VW-02, NFR-VW-04, NFR-PL-01, NFR-PL-06, NFR-QA-01 … NFR-QA-04, NFR-CI-01 … NFR-CI-04 |
 | `A` analysis / review | 7 | FR-IF-05, FR-OP-06, NFR-CT-01, NFR-PL-04, NFR-GM-01, NFR-GM-02, NFR-QA-02 |
 | `I` inspection | 9 | FR-PL-05, NFR-PL-02, NFR-PL-03, NFR-PL-05, NFR-VW-03, NFR-PL-07, NFR-PL-08, NFR-CI-02, NFR-CI-05 |
 
@@ -306,9 +307,9 @@ pure functions over an immutable state value.
 
 ```sh
 npm run lint      # Biome and markdownlint over the whole workspace
-npm test          # 195 unit tests
+npm test          # 198 unit tests
 npm run coverage  # unit tests plus the 96 % coverage gate
-npm run test:e2e  # 9 end to end tests in Chromium
+npm run test:e2e  # 10 end to end tests in Chromium
 npm run ci        # all of the above, the same order as the build server
 ```
 
@@ -319,7 +320,7 @@ matrix can be checked mechanically against the reporter output, for example with
 
 Current status: every `T` requirement has at least one passing test; both
 linters report zero findings with warnings treated as errors; code coverage of
-`html5/src/js/**` is 99.8 % statements, 98.7 % branches, 98.5 % functions and
+`html5/src/js/**` is 99.8 % statements, 98.6 % branches, 98.5 % functions and
 99.8 % lines.
 
 ---
@@ -330,7 +331,6 @@ linters report zero findings with warnings treated as errors; code coverage of
 | --- | --- | --- |
 | D-01 | FR-EN-04 | Inside a compulsory multi-jump the mover does not change, so a child node can carry the same player as its parent and UCB1 then optimises from the opponent's perspective. Playing strength only; see [engine_mcts_ucb.md](engine_mcts_ucb.md) §2.4. |
 | D-02 | FR-EN-08 | The throughput string is transported to the HMI but never rendered. |
-| D-03 | FR-GM-18 | The end of a game is only visible by the board becoming inert; there is no message. |
 | D-04 | FR-EN-09 | The random provider is implemented and tested but no request selects it at runtime. |
 | D-05 | NFR-EN-01 | The time budget is checked between blocks of 50 playouts, so it can be overshot by one block on slow devices. |
 | D-06 | NFR-PL-01 | Only Chromium is configured in [playwright.config.js](../playwright.config.js); Firefox and WebKit projects are not enabled. |

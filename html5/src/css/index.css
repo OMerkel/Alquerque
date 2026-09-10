@@ -81,6 +81,39 @@
   overflow: hidden;
 }
 
+#board {
+  position: relative;
+}
+
+.winning-celebration {
+  position: fixed;
+  top: calc(var(--game-title-bar-height, 4rem) + 0.25rem);
+  left: 50%;
+  z-index: 2;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: 82%;
+  padding: 0.65rem 1rem;
+  border: 1px solid #efb366;
+  border-radius: 0.5rem;
+  background-color: #171717;
+  color: #fff;
+  opacity: 0.7;
+  text-align: center;
+  text-shadow: none;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.winning-celebration[hidden] {
+  display: none;
+}
+
+.winning-celebration strong,
+.winning-celebration span {
+  display: block;
+}
+
 @supports (height: 100dvh) {
   #game-page {
     height: 100dvh;
