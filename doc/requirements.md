@@ -87,7 +87,7 @@ pure functions over an immutable state value.
 | FR-GM-04 | A normal move goes one step along a drawn line onto an empty point. | T | `board.test.js › uses diagonals only where they are drawn`, `board.test.js › offers exactly the four moves into the free centre point` |
 | FR-GM-05 | Light must not move to a lower row, dark must not move to a higher row. | T | `board.test.js › never moves light backwards or dark forwards` |
 | FR-GM-06 | A checker on the opponent's base row can no longer perform normal moves. | T | `board.test.js › freezes a checker that reached the opponent base row` |
-| FR-GM-07 | A checker must not return to the point it came from with its own previous normal move, unless the invert option is enabled. | T | `board.test.js › forbids taking back the pieces own last step unless inverting is allowed` |
+| FR-GM-07 | By default, a checker must not return to the point it came from with its own previous normal move; the invert option may allow it. The restriction applies per checker, prevents simple reversal draw cycles and does not apply to captures. | T | `board.test.js › forbids taking back the pieces own last step unless inverting is allowed`, `e2e › shows the rules subpage full screen and hides the board` |
 | FR-GM-08 | The restriction of FR-GM-07 is tracked per checker, not per player. | T | `board.test.js › keeps the restriction bound to a single piece` |
 | FR-GM-09 | Captures are compulsory: when any jump exists, no normal move is offered. | T | `board.test.js › makes captures compulsory` |
 | FR-GM-10 | A capture jumps one adjacent opponent checker in a straight line onto the empty point behind it, in any direction including backwards. | T | `board.test.js › captures in every direction, backwards included` |
@@ -125,7 +125,7 @@ pure functions over an immutable state value.
 | FR-CT-03 | `perform` applies a human action and answers with the new position. | T | `controller.test.js › applies a human action and redraws` |
 | FR-CT-04 | `actionbyai` lets the engine choose, applies the action and answers with the new position. | T | `controller.test.js › lets the engine choose and apply an action` |
 | FR-CT-05 | `restart` resets to the initial position and answers `restore` followed by `redraw`. | T | `controller.test.js › restores the initial position on restart`, `e2e › starts a new game from the sidebar` |
-| FR-CT-06 | The snapshot sent to the HMI contains the position, the player to move, all legal actions, the previous action and whether a human moves next. | T | `controller.test.js › describes square, turn, actions and who plays next` |
+| FR-CT-06 | The snapshot sent to the HMI contains the position, the player to move, all legal actions, reversals blocked by the active rules, the previous action and whether a human moves next. | T | `controller.test.js › describes square, turn, actions and who plays next`, `controller.test.js › describes reversals forbidden by the active rule` |
 | FR-CT-07 | `nextishuman` is false for an AI player and for a finished game. | T | `controller.test.js › marks the next turn as non human for the AI and for a finished game` |
 | FR-CT-08 | Unknown requests and foreign message classes are ignored without side effects. | T | `controller.test.js › ignores unknown requests and foreign message classes` |
 | FR-CT-09 | The invert-last rule option is applied to the model before the action is evaluated. | T | `controller.test.js › lets the engine choose and apply an action` |
@@ -167,6 +167,7 @@ pure functions over an immutable state value.
 | FR-IN-06 | After a redraw the turn is dispatched: human input, AI request, or nothing when the game is over. | T | `hmi.test.js › asks the engine for a move when the AI is on turn`, `hmi.test.js › animates a reported action before continuing the turn` |
 | FR-IN-07 | A human move is played end to end in a real browser. | T | `e2e › plays a human move and forces the compulsory capture in return` |
 | FR-IN-08 | "New" restarts the game, drops any pending selection and closes the sidebar. | T | `hmi.test.js › restarts the game and drops the selection`, `main.test.js › starts a new game from the sidebar`, `e2e › starts a new game from the sidebar` |
+| FR-IN-09 | When strict inversion prevention blocks a selected checker's previous square, that square is marked with a red X. No X is shown when inversion is allowed, a capture is compulsory or the selection ends. | T | `board.test.js › forbids taking back the pieces own last step unless inverting is allowed`, `board.test.js › makes captures compulsory`, `svgBoard.test.js › marks a forbidden reversal square with a red X`, `hmi.test.js › marks a selected checkers forbidden reversal square` |
 
 ### 2.7 NV — Navigation and shell
 
@@ -297,7 +298,7 @@ pure functions over an immutable state value.
 
 | Method | Count | Requirements |
 | --- | --- | --- |
-| `T` automated test | 96 | all FR except FR-PL-05; NFR-EN-01, NFR-VW-01, NFR-VW-02, NFR-VW-04, NFR-PL-01, NFR-PL-06, NFR-QA-01 … NFR-QA-04, NFR-CI-01 … NFR-CI-04 |
+| `T` automated test | 97 | all FR except FR-PL-05; NFR-EN-01, NFR-VW-01, NFR-VW-02, NFR-VW-04, NFR-PL-01, NFR-PL-06, NFR-QA-01 … NFR-QA-04, NFR-CI-01 … NFR-CI-04 |
 | `A` analysis / review | 7 | FR-IF-05, FR-OP-06, NFR-CT-01, NFR-PL-04, NFR-GM-01, NFR-GM-02, NFR-QA-02 |
 | `I` inspection | 9 | FR-PL-05, NFR-PL-02, NFR-PL-03, NFR-PL-05, NFR-VW-03, NFR-PL-07, NFR-PL-08, NFR-CI-02, NFR-CI-05 |
 
@@ -305,7 +306,7 @@ pure functions over an immutable state value.
 
 ```sh
 npm run lint      # Biome and markdownlint over the whole workspace
-npm test          # 192 unit tests
+npm test          # 195 unit tests
 npm run coverage  # unit tests plus the 96 % coverage gate
 npm run test:e2e  # 9 end to end tests in Chromium
 npm run ci        # all of the above, the same order as the build server

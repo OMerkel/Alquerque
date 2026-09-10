@@ -95,6 +95,15 @@ test('shows the rules subpage full screen and hides the board', async ({ page })
   await expect(page.locator('#board')).toBeHidden();
   await expect(page.locator('#left-panel')).toBeHidden();
   await expect(page.locator('#rules-page h2').first()).toHaveText('Game Material');
+  await expect(page.locator('#rules-page')).toContainText(
+    'By default, a checker must not reverse its own previous non-capturing move'
+  );
+  await expect(page.locator('#rules-page')).toContainText(
+    'The Options page can allow such inversions'
+  );
+  await expect(page.locator('#rules-page')).toContainText(
+    'a red X marks the previous square to which it must not return'
+  );
 
   await page.locator('#customBackRules').click();
   await expect(page.locator('#game-page')).toBeVisible();
@@ -123,6 +132,9 @@ test('applies an option chosen on the options subpage', async ({ page }) => {
   await page.getByRole('link', { name: 'Options…' }).click();
   await expect(page.locator('#options-menu')).toBeVisible();
   await expect(page.locator('#board')).toBeHidden();
+  await expect(page.locator('#options-menu')).toContainText(
+    'selecting an affected checker marks its blocked previous square with a red X'
+  );
 
   await page.locator('label[for="showalgebraicnotation"]').click();
   await expect(page.locator('#showalgebraicnotation')).toBeChecked();

@@ -10,6 +10,7 @@ import {
   BLACK,
   createInitialState,
   getActions,
+  getForbiddenReversals,
   NONE,
   pieceAt,
   SIZE
@@ -34,6 +35,7 @@ export const describe = (state, rules, data) => {
     square: squareOf(state),
     turn: state.active,
     actions,
+    reversals: getForbiddenReversals(state, rules),
     previous: state.previousAction,
     nextishuman: actions.length > 0 && isHuman(data, state.active)
   };

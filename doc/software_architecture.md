@@ -237,6 +237,7 @@ classDiagram
     +setSourceSelectable(point, selectable)
     +setSourceSelected(point, selected)
     +setLastMove(action)
+    +setForbiddenReversal(point)
   }
 
   class navigation {
@@ -296,6 +297,7 @@ classDiagram
     +getMoves(state, rules) ActionList
     +getJumps(state) ActionList
     +getJumpsFor(state, from) ActionList
+    +getForbiddenReversals(state, rules) ReversalList
     +hasJumpsFor(state, from) bool
     +getActions(state, rules) ActionList
     +applyAction(state, action) State
@@ -369,7 +371,7 @@ Every one of these is a plain, freely copyable value; nothing carries behaviour.
 | `Action` | `{ type: 'move'\|'jump', by, from, direction, to, over? }` | `over` only present for `'jump'` |
 | `State` | `{ field, active, previousAction }` | the whole game position, replaced on every action |
 | `Rules` | `{ invertLast: boolean }` | the only rule variant offered by the Options page |
-| `Board` | `{ square, turn, actions, previous, nextishuman }` | the snapshot sent to the HMI |
+| `Board` | `{ square, turn, actions, reversals, previous, nextishuman }` | the snapshot sent to the HMI; `reversals` contains rule-blocked `{ from, to }` pairs |
 | `ActionInfo` | `{ action, info }` | chosen action plus a diagnostic string |
 
 ---
@@ -386,7 +388,7 @@ The rule text of [doc/rules.md](rules.md) maps onto code as follows.
 | No backward normal move | `moveDirections()` keeps `d.y >= 0` for light and `d.y <= 0` for dark |
 | Piece on opponent's home row cannot move normally | `moveDirections()` returns `[]` on `opponentBaseRow(player)` |
 | Jumps allowed in every direction, also backwards | `jumpDirections()` is independent of the player and keeps every on-board line |
-| No taking back the piece's own last step | `Piece.previous` is checked in `getMoves()`, bypassed when `rules.invertLast` is `true` |
+| No taking back the piece's own last step | `Piece.previous` is checked in `getMoves()`, bypassed when `rules.invertLast` is `true`; `getForbiddenReversals()` exposes actively blocked squares for the HMI |
 | Captures are compulsory | `getActions()` returns `getJumps()` and only falls back to `getMoves()` when that list is empty |
 | Multiple jump is compulsory and continues with the same piece | `applyAction()` only switches the player when `hasJumpsFor(to)` is false; `getJumps()` restricts to `previousAction.to` while `previousAction.by === active` |
 | No immediate jump reversal | emergent: the jumped-over point is emptied instantly, so the reverse jump has no victim |
@@ -614,6 +616,7 @@ sequenceDiagram
   Hmi->>Hmi: deactivateSelection() (clear previous highlight)
   Hmi->>Hmi: selection.from := data-x / data-y of the element
   Hmi->>Paper: darken and raise the selected source ring
+  Hmi->>Paper: show red X at matching board.reversals target, if any
   Hmi->>Paper: activateSelection(): show/hide target rects,<br/>bind clickTarget on each legal target
   P->>Paper: click on a target point
   Paper-->>Hmi: clickTarget(event)
@@ -909,12 +912,20 @@ CSS-animated spinner sits to the left of the symbol and is marked
 `aria-hidden` because it is purely decorative. The compact status span has a
 dark background, rounded light-orange border and horizontal padding.
 
-`BoardView` owns two independent marker layers. `sourceMarkers` contains the
-light-green rings for legal human move origins. Selecting one darkens it and
-moves its circle to the end of the SVG child list, which is the SVG equivalent
-of raising its z-index. `lastMoveMarkers` contains a light-blue dashed source
-ring and solid target ring at half the green stroke width. The blue pair is
-replaced after each completed animation and removed by `restore`.
+`BoardView` owns three independent visual marker sets. `sourceMarkers` contains
+the light-green rings for legal human move origins. Selecting one darkens it
+and moves its circle to the end of the SVG child list, which is the SVG
+equivalent of raising its z-index. `lastMoveMarkers` contains a light-blue
+dashed source ring and solid target ring at half the green stroke width. The
+blue pair is replaced after each completed animation and removed by `restore`.
+The transient `forbiddenReversalMarker` is the red X for the selected checker.
+
+The controller derives `board.reversals` from the same model state and
+`invertLast` rule used for legal move generation. A pair is emitted only when
+the previous square is empty, connected by an allowed normal-move direction
+and no capture supersedes normal moves. Selecting its `from` checker calls
+`setForbiddenReversal(to)`, which appends a pointer-transparent red SVG X above
+the board. Changing selection, submitting a move, redraw and restart remove it.
 
 ### 8.5 Responsive layout
 

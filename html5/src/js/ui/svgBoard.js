@@ -71,6 +71,7 @@ export const createBoardView = (
   const listeners = new Map();
   const sourceMarkers = new Map();
   let lastMoveMarkers = [];
+  let forbiddenReversalMarker = null;
 
   const pointKey = (point) => `${point.x},${point.y}`;
 
@@ -265,6 +266,31 @@ export const createBoardView = (
     }
   };
 
+  const setForbiddenReversal = (point) => {
+    forbiddenReversalMarker?.remove();
+    forbiddenReversalMarker = null;
+    if (point === null) return;
+    const centreX = screenX(point) + 0.5;
+    const centreY = screenY(point) + 0.5;
+    const marker = element('g', { class: 'forbidden-reversal' });
+    marker.append(
+      element('line', {
+        x1: centreX - 0.22,
+        y1: centreY - 0.22,
+        x2: centreX + 0.22,
+        y2: centreY + 0.22
+      }),
+      element('line', {
+        x1: centreX + 0.22,
+        y1: centreY - 0.22,
+        x2: centreX - 0.22,
+        y2: centreY + 0.22
+      })
+    );
+    svg.append(marker);
+    forbiddenReversalMarker = marker;
+  };
+
   restoreInitial();
 
   return {
@@ -282,6 +308,7 @@ export const createBoardView = (
     setSourceSelectable,
     setSourceSelected,
     setLastMove,
+    setForbiddenReversal,
     placeEmpty,
     placePiece
   };

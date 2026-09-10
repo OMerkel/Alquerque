@@ -74,10 +74,12 @@ Für normale Züge (nicht aber für Schlagzüge) gelten zwei Einschränkungen:
 * **Kein Rückwärtsziehen.** Hell darf niemals auf eine Reihe mit kleinerer
   Nummer ziehen, Dunkel niemals auf eine Reihe mit größerer Nummer. Seitwärts
   und vorwärts ist erlaubt.
-* **Der eigene letzte Schritt darf nicht zurückgenommen werden.** Ein Stein darf
-  nicht direkt auf den Punkt zurückziehen, von dem er mit seinem eigenen
-  vorherigen normalen Zug gekommen ist. Wähle einen anderen Schritt oder einen
-  anderen Stein.
+* **Der eigene letzte Schritt darf nicht zurückgenommen werden.** Standardmäßig
+  darf ein Stein nicht direkt auf den Punkt zurückziehen, von dem er mit seinem
+  eigenen vorherigen normalen Zug gekommen ist. Diese Historie wird für jeden
+  Stein getrennt gespeichert und verhindert einfache Remis-Schleifen durch das
+  Zurücknehmen von Zügen. In den Optionen kann diese Umkehr erlaubt werden. Ist
+  sie strikt verboten, wähle einen anderen Schritt oder einen anderen Stein.
 
 Ein Stein, der die gegnerische Grundreihe erreicht hat (Hell auf Reihe 5, Dunkel
 auf Reihe 1), steckt dort für normale Züge fest — er kann nicht mehr normal

@@ -153,6 +153,13 @@ If not otherwise stated all graphics (independent of its format) are licensed un
       it's position to positions on rows with higher numbers.
       Thus neither a light nor a dark checker can move backwards
       in direction of the player's own base row.</p>
+    <p>By default, a checker must not reverse its own previous non-capturing
+      move: it cannot move straight back to the point it came from. This
+      restriction is tracked separately for every checker and avoids draw
+      situations caused by repeatedly taking back moves. The Options page can
+      allow such inversions. When the restriction blocks a selected checker,
+      a red X marks the previous square to which it must not return. The
+      restriction does not apply to captures.</p>
     <p>A checker that reached the opponent's base row can not be
       moved any longer but only capture opponent's checkers
       if possible. Anyway the checker is allowed to perform
@@ -254,7 +261,7 @@ If not otherwise stated all graphics (independent of its format) are licensed un
       </fieldset>
       <fieldset class='ui-controlgroup ui-controlgroup-vertical ui-corner-all'>
         <div class='ui-controlgroup-label'>
-          <legend>Inverting each pieces' own last move is&#8230;</legend>
+          <legend>Reversing each checker's own previous non-capturing move is&#8230;</legend>
         </div>
         <div class='ui-controlgroup-controls'>
           <div class='ui-radio ui-first-child'>
@@ -271,8 +278,10 @@ If not otherwise stated all graphics (independent of its format) are licensed un
           </div>
         </div>
       </fieldset>
-      <i>Mind: This rule is not about the player's last move only. It covers
-        each pieces' own last move separately.</i><br />
+      <i>Mind: This rule tracks every checker's previous non-capturing move
+        separately. When reversal is strictly forbidden, selecting an affected
+        checker marks its blocked previous square with a red X. Captures are
+        unaffected.</i><br />
       <fieldset class='ui-controlgroup ui-controlgroup-vertical ui-corner-all'>
         <div class='ui-controlgroup-label'>
           <legend>For available moves of human the target fields are&#8230;</legend>

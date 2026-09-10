@@ -68,9 +68,11 @@ Two restrictions apply to normal moves (but not to captures):
 
 * **No moving backwards.** Light may never move to a lower-numbered row, Dark
   may never move to a higher-numbered row. Sideways and forwards is fine.
-* **No taking back your last step.** A piece may not step straight back onto
-  the point it came from with its own previous normal move. Pick a different
-  step or a different piece.
+* **No taking back the piece's own last step.** By default, a piece may not
+  step straight back onto the point it came from with its own previous normal
+  move. This history is tracked separately for every piece and prevents simple
+  move-reversal draw cycles. The Options page can allow such inversions. Pick a
+  different step or a different piece when they are strictly forbidden.
 
 A piece that has arrived on the opponent's home row (Light on row 5, Dark on
 row 1) is stuck there for normal moves — it cannot be moved any more. It may

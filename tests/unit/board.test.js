@@ -5,6 +5,7 @@ import {
   createInitialState,
   DEFAULT_RULES,
   getActions,
+  getForbiddenReversals,
   getJumps,
   getJumpsFor,
   getMoves,
@@ -84,6 +85,10 @@ describe('non capturing moves', () => {
     expect(notations(getMoves(stepped))).not.toContain('b3-c3');
     expect(notations(getMoves(stepped, { invertLast: true }))).toContain('b3-c3');
     expect(notations(getMoves(stepped, DEFAULT_RULES))).not.toContain('b3-c3');
+    expect(getForbiddenReversals(stepped)).toEqual([
+      { from: { x: 1, y: 2 }, to: { x: 2, y: 2 } }
+    ]);
+    expect(getForbiddenReversals(stepped, { invertLast: true })).toEqual([]);
   });
 
   it('keeps the restriction bound to a single piece', () => {
@@ -100,6 +105,8 @@ describe('capturing', () => {
   it('makes captures compulsory', () => {
     expect(notations(getActions(position))).toEqual(['c2xc4']);
     expect(getMoves(position).length).toBeGreaterThan(0);
+    position.field[2][1].previous = { x: 1, y: 1 };
+    expect(getForbiddenReversals(position)).toEqual([]);
   });
 
   it('captures in every direction, backwards included', () => {

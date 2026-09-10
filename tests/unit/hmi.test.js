@@ -132,6 +132,23 @@ describe('hmi', () => {
     expect(view.at({ x: 2, y: 2 }).getAttribute('opacity')).toBe('0.4');
   });
 
+  it('marks a selected checkers forbidden reversal square', () => {
+    const { doc, win, view, hmi } = setup();
+    hmi.update(
+      {
+        turn: 0,
+        actions: [{ from: { x: 1, y: 2 }, to: { x: 1, y: 3 } }],
+        reversals: [{ from: { x: 1, y: 2 }, to: { x: 2, y: 2 } }],
+        nextishuman: true
+      },
+      null
+    );
+    click(win, view.at({ x: 1, y: 2 }));
+    expect(doc.querySelector('.forbidden-reversal')).not.toBeNull();
+    hmi.update({ turn: 0, actions: [], reversals: [], nextishuman: false }, null);
+    expect(doc.querySelector('.forbidden-reversal')).toBeNull();
+  });
+
   it('hides the targets of a previous selection', () => {
     const { doc, win, view, hmi } = connected();
     doc.getElementById('showavailablemove').checked = true;

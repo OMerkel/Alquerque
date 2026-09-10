@@ -113,6 +113,13 @@
   stroke-dasharray: 0.12 0.08;
 }
 
+.alquerque-paper .forbidden-reversal {
+  stroke: #ff3b30;
+  stroke-width: 0.1;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
 #abouttitle {
   width: 100%;
   max-width: 500px;

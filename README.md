@@ -58,6 +58,8 @@ The game view exposes turn and move state directly on the board:
   symbol.
 * Every pawn that can start a legal move has a light-green circular ring. The
   selected pawn uses a darker green ring painted above the other highlights.
+  When the default anti-reversal rule blocks that pawn from returning to its
+  previous square, a red X marks the forbidden square.
 * The previous move remains visible in light blue: a dashed ring marks its
   empty source and a solid ring marks the pawn at its target.
 * Pawn movement is a two-part soft jump. The pawn moves and grows toward the
@@ -122,6 +124,12 @@ on rows with lower numbers. A dark checker can not move from
 it's position to positions on rows with higher numbers.
 Thus neither a light nor a dark checker can move backwards
 in direction of the player's own base row.
+
+By default, a checker must not reverse its own previous non-capturing move: it
+cannot move straight back to the point it came from. This restriction is
+tracked separately for every checker and avoids draw situations caused by
+repeatedly taking back moves. The option *Inverting each pieces' own last move
+is... allowed* disables this restriction. It does not apply to captures.
 
 A checker that reached the opponent's base row can not be
 moved any longer but only capture opponent's checkers

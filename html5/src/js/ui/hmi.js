@@ -60,6 +60,7 @@ export const createHmi = ({ doc, view, engine, win = globalThis }) => {
   const deactivateSelection = () => {
     if (selection === null) return;
     view.setSourceSelected(selection.from, false);
+    view.setForbiddenReversal(null);
     for (const action of board.actions) {
       if (!samePoint(selection.from, action.from)) continue;
       const target = view.at(action.to);
@@ -75,6 +76,7 @@ export const createHmi = ({ doc, view, engine, win = globalThis }) => {
     );
     view.clearHandlers();
     clearSourceHighlights();
+    view.setForbiddenReversal(null);
     for (const action of board.actions) view.setTargetVisible(action.to, false);
     if (chosen === undefined) return;
     selection = null;
@@ -94,6 +96,8 @@ export const createHmi = ({ doc, view, engine, win = globalThis }) => {
     deactivateSelection();
     selection = { from: pointOf(event.currentTarget) };
     view.setSourceSelected(selection.from, true);
+    const reversal = board.reversals?.find((candidate) => samePoint(selection.from, candidate.from));
+    view.setForbiddenReversal(reversal?.to ?? null);
     activateSelection();
   };
 
@@ -119,6 +123,7 @@ export const createHmi = ({ doc, view, engine, win = globalThis }) => {
   const update = (next, actionInfo) => {
     resize();
     clearSourceHighlights();
+    view.setForbiddenReversal(null);
     const options = readOptions(doc);
     view.showNotation(options.showalgebraicnotation);
     const badge = activePlayerBadge(next.turn, options);
@@ -138,6 +143,7 @@ export const createHmi = ({ doc, view, engine, win = globalThis }) => {
   const restart = () => {
     view.clearHandlers();
     clearSourceHighlights();
+    view.setForbiddenReversal(null);
     selection = null;
     post('restart');
   };

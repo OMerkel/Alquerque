@@ -39,8 +39,18 @@ describe('board snapshot', () => {
     expect(board.square[0][0]).toBe(WHITE);
     expect(board.square[0][4]).toBe(BLACK);
     expect(board.actions).toHaveLength(4);
+    expect(board.reversals).toEqual([]);
     expect(board.nextishuman).toBe(true);
     expect(board.previous).toBeNull();
+  });
+
+  it('describes reversals forbidden by the active rule', () => {
+    const state = stateFrom(['.....', '.....', '.w...', '.....', '.....']);
+    state.field[1][2].previous = { x: 2, y: 2 };
+    expect(describeBoard(state, { invertLast: false }, HUMANS).reversals).toEqual([
+      { from: { x: 1, y: 2 }, to: { x: 2, y: 2 } }
+    ]);
+    expect(describeBoard(state, { invertLast: true }, HUMANS).reversals).toEqual([]);
   });
 
   it('marks the next turn as non human for the AI and for a finished game', () => {

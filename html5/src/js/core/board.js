@@ -113,6 +113,27 @@ export const getJumps = (state) => {
   return actions;
 };
 
+export const getForbiddenReversals = (state, rules = DEFAULT_RULES) => {
+  if (rules.invertLast || getJumps(state).length > 0) return [];
+  const reversals = [];
+  for (let y = 0; y < SIZE; ++y) {
+    for (let x = 0; x < SIZE; ++x) {
+      const occupant = state.field[x][y];
+      if (occupant === null || occupant.piece !== state.active || occupant.previous === null) {
+        continue;
+      }
+      const from = { x, y };
+      const to = occupant.previous;
+      if (state.field[to.x][to.y] !== null) continue;
+      const followsLine = MOVE_DIRECTIONS[state.active][x][y].some((direction) =>
+        samePoint(translate(from, direction), to)
+      );
+      if (followsLine) reversals.push({ from, to });
+    }
+  }
+  return reversals;
+};
+
 /** Captures are compulsory: normal moves are offered only when no jump exists. */
 export const getActions = (state, rules = DEFAULT_RULES) => {
   const jumps = getJumps(state);

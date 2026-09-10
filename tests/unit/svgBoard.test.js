@@ -130,6 +130,17 @@ describe('board view', () => {
     expect(board.svg.querySelector('.last-move-ring')).toBeNull();
   });
 
+  it('marks a forbidden reversal square with a red X', () => {
+    const { board } = view();
+    board.setForbiddenReversal({ x: 2, y: 2 });
+    const marker = board.svg.querySelector('.forbidden-reversal');
+    expect(marker.querySelectorAll('line')).toHaveLength(2);
+    expect(marker.firstElementChild.getAttribute('x1')).toBe('2.78');
+    expect(marker.firstElementChild.getAttribute('y1')).toBe('2.78');
+    board.setForbiddenReversal(null);
+    expect(board.svg.querySelector('.forbidden-reversal')).toBeNull();
+  });
+
   it('binds and unbinds click handlers', () => {
     const { board, win } = view();
     let clicks = 0;
