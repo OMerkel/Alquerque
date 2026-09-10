@@ -1,0 +1,16 @@
+{
+  "globs": ["**/*.md", "!node_modules"],
+  "config": {
+    "default": true,
+    "MD013": {
+      "line_length": 100,
+      "tables": false,
+      "code_blocks": false,
+      "headings": false
+    },
+    "MD024": { "siblings_only": true },
+    "MD033": {
+      "allowed_elements": ["a", "b", "br", "em", "img", "p", "table", "td", "tr"]
+    }
+  }
+}

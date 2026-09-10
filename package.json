@@ -1,0 +1,30 @@
+{
+  "name": "alquerque",
+  "version": "0.2.0",
+  "description": "Alquerque de doze - two player abstract strategy board game with UCT/MCTS computer AI",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "author": "Oliver Merkel <Merkel.Oliver@web.de>",
+  "scripts": {
+    "lint": "npm run lint:code && npm run lint:md",
+    "lint:code": "biome check --error-on-warnings",
+    "lint:code:fix": "biome check --write",
+    "lint:md": "markdownlint-cli2",
+    "lint:md:fix": "markdownlint-cli2 --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "serve": "node tools/serve.js",
+    "test:e2e": "playwright test",
+    "ci": "npm run lint && npm run coverage && npm run test:e2e"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.12",
+    "@playwright/test": "^1.49.1",
+    "@vitest/coverage-v8": "^2.1.8",
+    "jsdom": "^25.0.1",
+    "markdownlint-cli2": "0.23.2",
+    "vitest": "^2.1.8"
+  }
+}

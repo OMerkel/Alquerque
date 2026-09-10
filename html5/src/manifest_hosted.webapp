@@ -1,5 +1,5 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "name": "Alquerque",
   "description": "Alquerque de Doze board game with optional AI",
   "launch_path": "/Alquerque/html5/src/index.html",

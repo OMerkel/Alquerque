@@ -1,36 +1,116 @@
-.upsidedown{
+.upsidedown {
   -ms-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
 .ui-btn-icon-notext:after {
-    background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .customMenu {
-    background: url(../img/icons/icon-bars.svg) 50% 50% no-repeat;
-    left: 50%;
-    top: 50%;
+  background: url(../img/icons/icon-bars.svg) 50% 50% no-repeat;
+  left: 50%;
+  top: 50%;
 }
 
 .customBack {
-    background: url(../img/icons/icon-delete.svg) 50% 50% no-repeat;
-    left: 50%;
-    top: 50%;
+  background: url(../img/icons/icon-delete.svg) 50% 50% no-repeat;
+  left: 50%;
+  top: 50%;
+}
+
+.active-player {
+  position: absolute;
+  top: 7px;
+  right: 0.75rem;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  min-width: 4rem;
+  height: 2rem;
+  padding: 0 0.45rem;
+  overflow: hidden;
+  border: 1px solid #efb366;
+  border-radius: 0.4rem;
+  background-color: #171717;
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+  text-align: center;
+  text-shadow: none;
+  white-space: nowrap;
+}
+
+.active-player-spinner {
+  box-sizing: border-box;
+  width: 0.65rem;
+  height: 0.65rem;
+  flex: 0 0 auto;
+  border: 2px solid #666;
+  border-top-color: #efb366;
+  border-radius: 50%;
+  animation: active-player-spin 800ms linear infinite;
+}
+
+@keyframes active-player-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .ui-btn-icon-notext.ui-corner-all {
-    border-radius: 20em;
+  border-radius: 20em;
 }
 
 .ui-btn {
-    border-width: 0px;
-    border-style: none;
+  border-width: 0px;
+  border-style: none;
 }
 
 .mybackground {
   background: url(../img/background.jpg);
+}
+
+#game-page {
+  box-sizing: border-box;
+  height: 100vh;
+  min-height: 0;
+  overflow: hidden;
+}
+
+@supports (height: 100dvh) {
+  #game-page {
+    height: 100dvh;
+  }
+}
+
+.alquerque-paper image.selectable-source {
+  cursor: pointer;
+}
+
+.alquerque-paper circle.selectable-source-ring {
+  fill: none;
+  stroke: #a6ff8f;
+  stroke-width: 0.1;
+  pointer-events: none;
+}
+
+.alquerque-paper circle.selected-source-ring {
+  stroke: #62bd52;
+}
+
+.alquerque-paper circle.last-move-ring {
+  fill: none;
+  stroke: #83d9ff;
+  stroke-width: 0.05;
+  pointer-events: none;
+}
+
+.alquerque-paper circle.last-move-source {
+  stroke-dasharray: 0.12 0.08;
 }
 
 #abouttitle {
@@ -55,7 +135,8 @@ figure.diagram img {
 }
 
 figure.diagram figcaption {
-  background-color: #666; color: #fff;
+  background-color: #666;
+  color: #fff;
   font-style: italic;
   width: 100%;
   padding: 5px;
@@ -89,7 +170,8 @@ figure.author embed {
 }
 
 figure.author figcaption {
-  background-color: #666; color: #fff;
+  background-color: #666;
+  color: #fff;
   font-style: italic;
   width: 100%;
   padding: 5px;

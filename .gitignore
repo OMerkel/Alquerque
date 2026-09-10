@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Coverage measurement output
+coverage/
+*.lcov
+
+# Test result output
+test-results/
+playwright-report/
+blob-report/
+.playwright/

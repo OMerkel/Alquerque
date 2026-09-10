@@ -1,0 +1,800 @@
+/*
+ * Alquerque theme
+ *
+ * Plain CSS reproduction of the jQuery Mobile 1.4.5 "b" (dark) swatch for the
+ * components used by this application: pages, fixed header bars, buttons with
+ * icon discs, listview, overlay panel, collapsible sets, radio control groups
+ * and the pop/slideup page transitions.
+ *
+ * Values are taken verbatim from jQuery Mobile 1.4.5, which is MIT licensed,
+ * Copyright 2010, 2014 jQuery Foundation, Inc. and other contributors.
+ */
+
+/* Globals ---------------------------------------------------------------- */
+
+html {
+  font-size: 100%;
+}
+
+body,
+input,
+select,
+textarea,
+button,
+.ui-btn {
+  font-size: 1em;
+  line-height: 1.3;
+  font-family: sans-serif;
+}
+
+html,
+body {
+  height: 99.9%;
+}
+
+body,
+.ui-page,
+fieldset {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a img,
+fieldset {
+  border-width: 0;
+  min-width: 0;
+}
+
+label {
+  display: block;
+  margin: 0 0 0.4em;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+/* Pages ------------------------------------------------------------------ */
+
+.ui-page {
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  position: absolute;
+  display: none;
+  border: 0;
+  outline: none;
+}
+
+.ui-page-active {
+  display: block;
+  overflow: visible;
+  overflow-x: hidden;
+}
+
+@media screen and (orientation: portrait) {
+  .ui-page {
+    min-height: 420px;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .ui-page {
+    min-height: 300px;
+  }
+}
+
+.ui-page-theme-b {
+  background-color: #252525;
+  border-color: #454545;
+  color: #fff;
+  text-shadow: 0 1px 0 #111;
+}
+
+.ui-page-theme-b a {
+  color: #22aadd;
+  font-weight: bold;
+}
+
+.ui-page-theme-b a:visited {
+  color: #22aadd;
+}
+
+.ui-page-theme-b a:hover,
+.ui-page-theme-b a:active {
+  color: #0088bb;
+}
+
+/* Bars and content ------------------------------------------------------- */
+
+.ui-bar,
+.ui-body {
+  position: relative;
+  padding: 0.4em 1em;
+  overflow: hidden;
+  display: block;
+  clear: both;
+}
+
+.ui-bar h1,
+.ui-bar h2,
+.ui-bar h3,
+.ui-bar h4,
+.ui-bar h5,
+.ui-bar h6 {
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  display: inline-block;
+}
+
+.ui-header {
+  border-width: 1px 0;
+  border-style: solid;
+  position: relative;
+}
+
+.ui-header .ui-title {
+  font-size: 1em;
+  min-height: 1.1em;
+  text-align: center;
+  display: block;
+  margin: 0 30%;
+  padding: 0.7em 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  outline: 0;
+}
+
+.ui-content {
+  border-width: 0;
+  overflow: visible;
+  overflow-x: hidden;
+  padding: 1em;
+}
+
+.ui-bar-b,
+.ui-page-theme-b .ui-bar-inherit {
+  background-color: #1d1d1d;
+  border-color: #1b1b1b;
+  color: #fff;
+  text-shadow: 0 1px 0 #111;
+  font-weight: bold;
+}
+
+.ui-body-b,
+.ui-page-theme-b .ui-body-inherit {
+  background-color: #2a2a2a;
+  border-color: #1d1d1d;
+  color: #fff;
+  text-shadow: 0 1px 0 #111;
+}
+
+.ui-header-fixed {
+  left: 0;
+  right: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  top: -1px;
+  padding-top: 1px;
+}
+
+.ui-page-header-fixed {
+  padding-top: 2.8125em;
+}
+
+/* Buttons ---------------------------------------------------------------- */
+
+.ui-btn {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0.5em 0;
+  padding: 0.7em 1em;
+  display: block;
+  position: relative;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  user-select: none;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.ui-btn:focus {
+  outline: 0;
+}
+
+.ui-corner-all {
+  border-radius: 0.3125em;
+  background-clip: padding-box;
+}
+
+.ui-btn.ui-corner-all {
+  border-radius: 0.3125em;
+}
+
+.ui-btn-icon-notext {
+  padding: 0;
+  width: 1.75em;
+  height: 1.75em;
+  text-indent: -9999px;
+  white-space: nowrap;
+}
+
+.ui-btn-icon-notext.ui-corner-all {
+  border-radius: 1em;
+}
+
+.ui-btn-icon-left {
+  padding-left: 2.5em;
+}
+
+.ui-btn-icon-right {
+  padding-right: 2.5em;
+}
+
+.ui-btn-left,
+.ui-btn-right {
+  position: absolute;
+  top: 0.24em;
+}
+
+.ui-btn-left {
+  left: 0.4em;
+}
+
+.ui-btn-right {
+  right: 0.4em;
+}
+
+.ui-btn-icon-notext.ui-btn-left {
+  top: 0.3125em;
+  left: 0.3125em;
+}
+
+.ui-btn-icon-notext.ui-btn-right {
+  top: 0.3125em;
+  right: 0.3125em;
+}
+
+.ui-header .ui-btn {
+  font-size: 12.5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.ui-header .ui-btn-left,
+.ui-header .ui-btn-right {
+  font-size: 12.5px;
+  margin: 0;
+}
+
+.ui-header .ui-btn-icon-notext {
+  font-size: 16px;
+  padding: 0;
+}
+
+.ui-header-fixed .ui-btn {
+  z-index: 10;
+}
+
+.ui-header-fixed .ui-btn-left,
+.ui-header-fixed .ui-btn-right {
+  margin-top: 1px;
+}
+
+.ui-btn-icon-left:after,
+.ui-btn-icon-right:after,
+.ui-btn-icon-notext:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 22px;
+  height: 22px;
+  top: 50%;
+  margin-top: -11px;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 1em;
+}
+
+.ui-btn-icon-left:after {
+  left: 0.5625em;
+}
+
+.ui-btn-icon-right:after {
+  right: 0.5625em;
+}
+
+.ui-btn-icon-notext:after {
+  left: 50%;
+  margin-left: -11px;
+}
+
+.ui-header .ui-btn-icon-left:after {
+  left: 0.37em;
+}
+
+.ui-header .ui-btn-icon-right:after {
+  right: 0.37em;
+}
+
+.ui-page-theme-b .ui-btn,
+.ui-page-theme-b .ui-btn:visited {
+  background-color: #333;
+  border-color: #1f1f1f;
+  color: #fff;
+  text-shadow: 0 1px 0 #111;
+}
+
+.ui-page-theme-b .ui-btn:hover {
+  background-color: #373737;
+  border-color: #1f1f1f;
+  color: #fff;
+}
+
+.ui-page-theme-b .ui-btn:active {
+  background-color: #404040;
+  border-color: #1f1f1f;
+  color: #fff;
+}
+
+.ui-page-theme-b .ui-btn.ui-btn-active {
+  background-color: #22aadd;
+  border-color: #22aadd;
+  color: #fff;
+  text-shadow: 0 1px 0 #0088bb;
+}
+
+.ui-page-theme-b .ui-btn:focus {
+  box-shadow: 0 0 12px #22aadd;
+}
+
+.ui-shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.ui-overlay-shadow {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Icons ------------------------------------------------------------------ */
+
+.ui-icon-action:after {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='14'%20height='14'%20viewBox='0%200%2014%2014'%3E%3Cpath%20fill='%23fff'%20d='M9,5v3l5-4L9,0v3c0,0-5,0-5,7C6,5,9,5,9,5z%20M11,12H2V5h1l2-2H0v11h13V7l-2,2V12z'/%3E%3C/svg%3E");
+}
+
+.ui-icon-back:after {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='14'%20height='14'%20viewBox='0%200%2014%2014'%3E%3Cpath%20fill='%23fff'%20d='M5,3V0L1,4l4,4V5c0,0,6,0,6,3s-5,4-5,4v2c0,0,7-1,7-6C13,4,8,3,5,3z'/%3E%3C/svg%3E");
+}
+
+.ui-icon-star:after {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='14'%20height='14'%20viewBox='0%200%2014%2014'%3E%3Cpolygon%20fill='%23fff'%20points='14,5%209,5%207,0%205,5%200,5%204,8%202.625,13%207,10%2011.375,13%2010,8'/%3E%3C/svg%3E");
+}
+
+.ui-icon-info:after {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='14'%20height='14'%20viewBox='0%200%2014%2014'%3E%3Cpath%20fill='%23fff'%20d='M7,0C3.134,0,0,3.134,0,7s3.134,7,7,7s7-3.134,7-7S10.866,0,7,0z%20M7,2c0.552,0,1,0.447,1,1S7.552,4,7,4S6,3.553,6,3S6.448,2,7,2z%20M9,11H5v-1h1V6H5V5h3v5h1V11z'/%3E%3C/svg%3E");
+}
+
+.ui-icon-grid:after {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='14'%20height='14'%20viewBox='0%200%2014%2014'%3E%3Cg%20fill='%23fff'%3E%3Crect%20x='0'%20y='0'%20width='4'%20height='4'%20rx='1'/%3E%3Crect%20x='5'%20y='0'%20width='4'%20height='4'%20rx='1'/%3E%3Crect%20x='10'%20y='0'%20width='4'%20height='4'%20rx='1'/%3E%3Crect%20x='0'%20y='5'%20width='4'%20height='4'%20rx='1'/%3E%3Crect%20x='5'%20y='5'%20width='4'%20height='4'%20rx='1'/%3E%3Crect%20x='10'%20y='5'%20width='4'%20height='4'%20rx='1'/%3E%3Crect%20x='0'%20y='10'%20width='4'%20height='4'%20rx='1'/%3E%3Crect%20x='5'%20y='10'%20width='4'%20height='4'%20rx='1'/%3E%3Crect%20x='10'%20y='10'%20width='4'%20height='4'%20rx='1'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.ui-icon-arrow-l:after {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='14'%20height='14'%20viewBox='0%200%2014%2014'%3E%3Cpolygon%20fill='%23fff'%20points='7,5%207,0%200,7%207,14%207,9%2014,9%2014,5'/%3E%3C/svg%3E");
+}
+
+.ui-icon-arrow-d:after {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='14'%20height='14'%20viewBox='0%200%2014%2014'%3E%3Cpolygon%20fill='%23fff'%20points='9,7%209,0%205,0%205,7%200,7%207,14%2014,7'/%3E%3C/svg%3E");
+}
+
+.ui-icon-check:after {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='14'%20height='14'%20viewBox='0%200%2014%2014'%3E%3Cpolygon%20fill='%23fff'%20points='14,4%2011,1%205.003,6.997%203,5%200,8%204.966,13%204.983,12.982%205,13'/%3E%3C/svg%3E");
+}
+
+/* Listview --------------------------------------------------------------- */
+
+.ui-listview,
+.ui-listview > li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ui-panel-inner > .ui-listview {
+  margin: -1em;
+}
+
+.ui-listview > li {
+  display: block;
+  position: relative;
+  overflow: visible;
+}
+
+.ui-listview > .ui-li-divider,
+.ui-listview > li > a.ui-btn {
+  margin: 0;
+  display: block;
+  position: relative;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  border-width: 1px 0 0 0;
+  border-style: solid;
+}
+
+.ui-listview > .ui-li-divider.ui-last-child,
+.ui-listview > li.ui-last-child > a.ui-btn {
+  border-bottom-width: 1px;
+}
+
+.ui-listview > .ui-li-divider {
+  padding: 0.5em 1.143em;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: default;
+  outline: 0;
+}
+
+/* Panel ------------------------------------------------------------------ */
+
+.ui-panel {
+  width: 17em;
+  min-height: 100%;
+  max-height: none;
+  border-width: 0;
+  position: absolute;
+  top: 0;
+  display: block;
+}
+
+.ui-panel-closed {
+  width: 0;
+  max-height: 100%;
+  overflow: hidden;
+  visibility: hidden;
+  left: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.ui-panel-display-overlay {
+  z-index: 1001;
+}
+
+.ui-panel-inner {
+  padding: 1em;
+}
+
+/* jQuery Mobile scopes this layer inside the panel wrapper stacking context;
+   without that wrapper it has to stay below the panel itself. */
+.ui-panel-dismiss {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  z-index: 1000;
+  display: none;
+}
+
+.ui-panel-dismiss-open {
+  display: block;
+}
+
+.ui-panel-position-left {
+  left: -17em;
+}
+
+.ui-panel-animate.ui-panel-position-left.ui-panel-display-overlay {
+  left: 0;
+  transform: translate3d(-17em, 0, 0);
+  transition: transform 300ms ease;
+}
+
+.ui-panel-open.ui-panel-position-left {
+  left: 0;
+}
+
+.ui-panel-animate.ui-panel-open.ui-panel-position-left.ui-panel-display-overlay {
+  transform: translate3d(0, 0, 0);
+}
+
+/* Collapsible ------------------------------------------------------------ */
+
+.ui-collapsible {
+  margin: 0 -1em;
+}
+
+.ui-collapsible-set {
+  margin: 0.5em 0;
+}
+
+.ui-collapsible-heading {
+  display: block;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  border-radius: inherit;
+}
+
+.ui-collapsible-heading .ui-btn {
+  text-align: left;
+  margin: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-radius: inherit;
+}
+
+.ui-collapsible-content {
+  display: block;
+  margin: 0;
+  padding: 0.5em 1em;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom-width: 1px;
+  border-style: solid;
+}
+
+.ui-collapsible-content-collapsed {
+  display: none;
+}
+
+.ui-collapsible-set > .ui-collapsible.ui-corner-all {
+  border-radius: 0;
+}
+
+.ui-collapsible-set .ui-collapsible {
+  margin: -1px -1em 0;
+}
+
+.ui-collapsible-set .ui-collapsible.ui-first-child {
+  margin-top: 0;
+}
+
+/* Control groups and radio buttons --------------------------------------- */
+
+.ui-radio {
+  margin: 0.5em 0;
+  position: relative;
+}
+
+.ui-radio .ui-btn {
+  margin: 0;
+  text-align: left;
+  white-space: normal;
+  z-index: 2;
+}
+
+.ui-radio input {
+  position: absolute;
+  left: 0.466em;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 0;
+  outline: 0;
+  z-index: 1;
+  opacity: 0;
+}
+
+.ui-btn.ui-radio-off:after,
+.ui-btn.ui-radio-on:after {
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin: -9px 2px 0 2px;
+}
+
+.ui-btn.ui-radio-off:after {
+  opacity: 0.3;
+}
+
+.ui-radio .ui-btn.ui-radio-on:after {
+  background-image: none;
+  background-color: #fff;
+  width: 8px;
+  height: 8px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #22aadd;
+}
+
+.ui-controlgroup,
+fieldset.ui-controlgroup {
+  padding: 0;
+  margin: 0.5em 0;
+}
+
+.ui-controlgroup-label legend,
+.ui-controlgroup-label {
+  max-width: 100%;
+  font-weight: normal;
+  font-size: 16px;
+  display: block;
+  margin: 0 0 0.4em;
+}
+
+.ui-controlgroup-controls {
+  border-radius: 0.3125em;
+}
+
+.ui-controlgroup-controls .ui-btn,
+.ui-controlgroup-controls .ui-radio {
+  margin: 0;
+}
+
+.ui-controlgroup-controls .ui-radio {
+  border-radius: inherit;
+}
+
+.ui-controlgroup-vertical .ui-controlgroup-controls .ui-btn {
+  border-bottom-width: 0;
+  border-radius: 0;
+}
+
+.ui-controlgroup-vertical .ui-radio.ui-first-child .ui-btn {
+  border-top-left-radius: 0.3125em;
+  border-top-right-radius: 0.3125em;
+}
+
+.ui-controlgroup-vertical .ui-radio.ui-last-child .ui-btn {
+  border-bottom-left-radius: 0.3125em;
+  border-bottom-right-radius: 0.3125em;
+}
+
+/* Collapsible headings, kept last so that specificity ascends across the file. */
+
+.ui-collapsible-collapsed + .ui-collapsible > .ui-collapsible-heading .ui-btn {
+  border-top-width: 0;
+}
+
+.ui-collapsible-set .ui-collapsible .ui-collapsible-heading .ui-btn {
+  border-top-width: 1px;
+}
+
+.ui-controlgroup-vertical .ui-controlgroup-controls .ui-radio.ui-last-child .ui-btn {
+  border-bottom-width: 1px;
+}
+
+/* Page transitions ------------------------------------------------------- */
+
+.in {
+  animation-timing-function: ease-out;
+  animation-duration: 350ms;
+}
+
+.out {
+  animation-timing-function: ease-in;
+  animation-duration: 225ms;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes popin {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes popout {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes slideinfrombottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideouttobottom {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+.pop {
+  transform-origin: 50% 50%;
+}
+
+.pop.in {
+  transform: scale(1);
+  animation-name: popin;
+  animation-duration: 350ms;
+  opacity: 1;
+}
+
+.pop.out {
+  animation-name: fadeout;
+  animation-duration: 100ms;
+  opacity: 0;
+}
+
+.pop.in.reverse {
+  animation-name: fadein;
+}
+
+.pop.out.reverse {
+  transform: scale(0.8);
+  animation-name: popout;
+}
+
+.slideup.out {
+  animation-name: fadeout;
+  animation-duration: 100ms;
+}
+
+.slideup.in {
+  transform: translateY(0);
+  animation-name: slideinfrombottom;
+  animation-duration: 250ms;
+}
+
+.slideup.in.reverse {
+  animation-name: fadein;
+  animation-duration: 150ms;
+}
+
+.slideup.out.reverse {
+  transform: translateY(100%);
+  animation-name: slideouttobottom;
+  animation-duration: 200ms;
+}
+
+/* Board ------------------------------------------------------------------ */
+
+.alquerque-paper {
+  display: block;
+}
+
+.alquerque-paper image,
+.alquerque-paper rect {
+  transform-box: fill-box;
+  transform-origin: center;
+}
