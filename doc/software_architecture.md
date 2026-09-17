@@ -67,8 +67,8 @@ per move**, therefore the model and the search must not run on the UI thread.
 
 ```mermaid
 flowchart LR
-  human1(["Player 1<br/>(light checkers)"])
-  human2(["Player 2<br/>(dark checkers)"])
+  human1(["Player ▼<br/>(light checkers)"])
+  human2(["Player ▲<br/>(dark checkers)"])
 
   subgraph browser["Web browser (desktop / mobile / Cordova WebView)"]
     app["Alquerque HTML5 application"]
@@ -908,9 +908,9 @@ matching the hint text *"All selections will be applied on next move or new
 game."* on the Options page.
 
 On every `redraw`, `activePlayerBadge()` combines `board.turn` with the current
-player-type options. The right-aligned badge displays `🧑▼` or `🤖▼` for the
-light/south player and `🧑▲` or `🤖▲` for the dark/north player. Its
-`aria-label` and tooltip provide the equivalent textual description. A small
+player-type options. The right-aligned badge displays `🧑▼` or `🤖▼` for
+`Player ▼` and `🧑▲` or `🤖▲` for `Player ▲`. Its `aria-label` and tooltip
+provide the equivalent textual description. A small
 CSS-animated spinner sits to the left of the symbol and is marked
 `aria-hidden` because it is purely decorative. The compact status span has a
 dark background, rounded light-orange border and horizontal padding.

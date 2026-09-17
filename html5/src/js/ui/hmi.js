@@ -20,11 +20,11 @@ export const boardSize = (innerWidth, innerHeight) =>
 export const iconSize = (size) => Math.min(MAX_ICON, Math.max(MIN_ICON, size / 10));
 
 export const activePlayerBadge = (turn, options) => {
-  const south = turn === WHITE;
-  const type = (south ? options.playerwhite : options.playerblack) === 'AI' ? 'AI' : 'Human';
+  const playerDown = turn === WHITE;
+  const type = (playerDown ? options.playerwhite : options.playerblack) === 'AI' ? 'AI' : 'Human';
   return {
-    label: `${type} player ${south ? 'south' : 'north'}`,
-    symbol: `${type === 'AI' ? '🤖' : '🧑'}${south ? '▼' : '▲'}`
+    label: `${type} Player ${playerDown ? '▼' : '▲'}`,
+    symbol: `${type === 'AI' ? '🤖' : '🧑'}${playerDown ? '▼' : '▲'}`
   };
 };
 

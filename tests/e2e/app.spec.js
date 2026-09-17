@@ -25,7 +25,7 @@ test('renders the initial position on the game page', async ({ page }) => {
     'animation-name',
     'active-player-spin'
   );
-  await expect(page.locator('#active-player')).toHaveAttribute('aria-label', 'Human player south');
+  await expect(page.locator('#active-player')).toHaveAttribute('aria-label', 'Human Player ▼');
   await expect(boardImages(page)).toHaveCount(26);
   await expect(page.locator('#board svg rect')).toHaveCount(1);
   await expect(page.locator('#board svg image[href*="light"]')).toHaveCount(12);
@@ -46,7 +46,7 @@ test('updates the active-player badge after a move', async ({ page }) => {
   await page.locator('#board svg rect[data-x="2"][data-y="2"]').click();
 
   await expect(page.locator('#active-player .active-player-symbol')).toHaveText('🧑▲');
-  await expect(page.locator('#active-player')).toHaveAttribute('aria-label', 'Human player north');
+  await expect(page.locator('#active-player')).toHaveAttribute('aria-label', 'Human Player ▲');
   await expect(page.locator('#board svg image.selectable-source')).toHaveCount(1);
   await expect(page.locator('#board svg image.selectable-source[href*="dark"]')).toHaveCount(1);
   await expect(page.locator('#board svg circle.selectable-source-ring')).toHaveCount(1);

@@ -51,11 +51,11 @@ describe('layout arithmetic', () => {
 
   it('describes the active player type and side', () => {
     expect(activePlayerBadge(0, { playerwhite: 'Human', playerblack: 'AI' })).toEqual({
-      label: 'Human player south',
+      label: 'Human Player ▼',
       symbol: '🧑▼'
     });
     expect(activePlayerBadge(1, { playerwhite: 'Human', playerblack: 'AI' })).toEqual({
-      label: 'AI player north',
+      label: 'AI Player ▲',
       symbol: '🤖▲'
     });
   });
@@ -187,8 +187,8 @@ describe('hmi', () => {
     const badge = doc.getElementById('active-player');
     expect(badge.querySelector('.active-player-symbol').textContent).toBe('🤖▲');
     expect(badge.querySelector('.active-player-spinner').getAttribute('aria-hidden')).toBe('true');
-    expect(badge.getAttribute('aria-label')).toBe('AI player north');
-    expect(badge.getAttribute('title')).toBe('AI player north');
+    expect(badge.getAttribute('aria-label')).toBe('AI Player ▲');
+    expect(badge.getAttribute('title')).toBe('AI Player ▲');
   });
 
   it('asks the engine for a move when the AI is on turn', () => {

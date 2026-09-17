@@ -53,8 +53,8 @@ the UCT algorithm.
 The game view exposes turn and move state directly on the board:
 
 * A compact badge opposite the menu identifies the active player. `🧑` and
-  `🤖` distinguish human and AI players; `▼` identifies the light/south side
-  and `▲` the dark/north side. A small spinner rotates to the left of the
+  `🤖` distinguish human and AI players; `Player ▼` identifies the light side
+  and `Player ▲` the dark side. A small spinner rotates to the left of the
   symbol.
 * Every pawn that can start a legal move has a light-green circular ring. The
   selected pawn uses a darker green ring painted above the other highlights.
